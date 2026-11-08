@@ -77,17 +77,27 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .strands-head{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:40px;align-items:end;margin-bottom:-56px}
 .strands-head h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(22px,3vw,30px);letter-spacing:1px}
 .strands-head p{margin:0;color:var(--paper-dim);max-width:60ch}
-.cell .kicker{font-size:10px;letter-spacing:2.5px;color:var(--paper-dim)}
+.cell .kicker,.research .kicker{font-size:10px;letter-spacing:2.5px;color:var(--paper-dim)}
 .ledger{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 .cell{border:1px solid var(--paper);padding:0;min-width:0;display:flex;flex-direction:column;background:var(--ink);position:relative;overflow:hidden}
 .cell .fig{height:180px;background-size:cover;background-position:center;border-bottom:1px solid var(--paper);filter:grayscale(1) contrast(1.1)}
 .cell .fig.c1{background-image:url("img/sakuya.jpg");filter:none;background-position:72% 20%;background-size:150%}
 .cell .fig.c2{background-image:url("img/columns.jpg")}
 .cell .fig.c3{background-image:url("img/nike.jpg")}
+.cell .fig.c4{background-image:url("img/hathor.jpg");filter:none;background-position:center 40%}
+/* RESEARCH ROW */
+.research{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:0;border:1px solid var(--paper);background:var(--ink)}
+.research .rfig{min-height:260px;background:url("img/nike.jpg") center/cover;filter:grayscale(1) contrast(1.1);border-right:1px solid var(--paper)}
+.research .rbody{padding:28px 32px;display:flex;flex-direction:column;gap:12px}
+.research h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(22px,3vw,30px);letter-spacing:1px}
+.research p{margin:0;color:var(--paper-dim);max-width:62ch}
+.research ul{margin:4px 0 0;padding-left:18px;color:var(--paper-dim);display:flex;flex-direction:column;gap:8px;max-width:66ch}
+.research li b{color:var(--paper);font-weight:800}
+@media (max-width:820px){.research{grid-template-columns:1fr}.research .rfig{min-height:160px;border-right:0;border-bottom:1px solid var(--paper)}}
 .cell .body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
 .cell h2{margin:0;font-family:var(--display);font-weight:400;font-size:20px;line-height:26px;letter-spacing:1px}
 .cell p{margin:0;color:var(--paper-dim)}
-.cell .status{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;margin-top:auto;padding-top:6px}
+.cell .status,.research .status{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;margin-top:auto;padding-top:6px}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--pom-bright);flex:none}
 
 /* STORY */
@@ -170,18 +180,34 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
     <div class="cell"><div class="fig c1"></div><div class="body">
       <div class="kicker">STRAND · PERINATAL</div>
       <h2>Sakuya</h2>
-      <p>Nutrition for conception, pregnancy and the year after. First release: Sakuya Matcha, a complete prenatal you froth into milk.</p>
+      <p>Nutrition for conception and pregnancy. First release: Sakuya Matcha, a complete prenatal you froth into milk.</p>
       <div class="status"><span class="dot"></span>SAKUYA MATCHA · IN FORMULATION</div></div></div>
+    <div class="cell"><div class="fig c4"></div><div class="body">
+      <div class="kicker">STRAND · POSTPARTUM</div>
+      <h2>Hathor</h2>
+      <p>Birth onward: recovery, feeding and the first year. A free tracker for the days, a postnatal made for after (not a prenatal continued), a lactation formula, and the hormone work nobody has done.</p>
+      <div class="status"><span class="dot"></span>TRACKER IN BUILD</div></div></div>
     <div class="cell"><div class="fig c2"></div><div class="body">
       <div class="kicker">STRAND · XX MEN</div>
       <h2>Shikhandi</h2>
       <p>Products and tools for XX men. Opens with a free tracker, then clinical products built around life on testosterone.</p>
       <div class="status"><span class="dot"></span>PLANNING</div></div></div>
-    <div class="cell"><div class="fig c3"></div><div class="body">
+  </section>
+
+  <section class="research" id="research" aria-label="Research">
+    <div class="rfig c3"></div>
+    <div class="rbody">
       <div class="kicker">ACROSS STRANDS</div>
       <h2>Research</h2>
-      <p>Studies on how XX bodies absorb and use nutrients, starting with iron, folate and the foods that block them.</p>
-      <div class="status"><span class="dot"></span>PLANNING</div></div></div>
+      <p>Every strand feeds a study. Open questions we intend to answer, in the order we can reach them:</p>
+      <ul>
+        <li><b>Absorption.</b> How XX bodies take up iron, folate and choline, and which everyday foods block them.</li>
+        <li><b>Postnatal nutrition.</b> What the body needs after birth, measured directly rather than extrapolated from pregnancy.</li>
+        <li><b>Lactation hormones.</b> Prolactin testing, hormone tracking and regulation, and D-MER (dysphoric milk ejection reflex), which almost no one has studied.</li>
+        <li><b>Life on testosterone.</b> The XX body on T: what changes, what needs care, what the data says once someone collects it.</li>
+      </ul>
+      <div class="status"><span class="dot"></span>AGENDA · SEEKING PARTNERS</div>
+    </div>
   </section>
 
   <section class="story" id="why">
@@ -215,7 +241,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
     <span><a href="mailto:olli@herabio.tech">olli@herabio.tech</a></span>
     <span><a href="https://herabio.shop">herabio.shop</a></span>
     <span>Brooklyn, NY</span>
-    <span class="credits">Photos via Unsplash: Mehrshad Rajabi, Hanson Lu, Josiah Lewis, Cristina Gottardi, Sahand Hoseini. Sketch rendered with Midjourney.</span>
+    <span class="credits">Photos via Unsplash: Mehrshad Rajabi, Hanson Lu, Josiah Lewis, Cristina Gottardi, Sahand Hoseini, Sameh (sameh_from_egypt). Sketch rendered with Midjourney.</span>
   </footer>
 </div>
 

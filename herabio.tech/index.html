@@ -79,6 +79,26 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .strands-head p{margin:0;color:var(--paper-dim);max-width:60ch}
 .cell .kicker,.research .kicker{font-size:10px;letter-spacing:2.5px;color:var(--paper-dim)}
 .ledger{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+/* strand = card stacked over a frosted-glass plate; card pulls back to reveal it */
+.strand{display:grid;min-width:0;perspective:1200px;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.strand>*{grid-area:1/1}
+.strand .glass{position:relative;overflow:hidden;border:1px solid rgba(238,237,232,.55);display:flex;flex-direction:column;justify-content:flex-start;padding:calc(18% + 26px) 20px 20px;isolation:isolate}
+.strand .glass::before{content:"";position:absolute;inset:0;background:var(--pane) center/cover;filter:saturate(.7);transform:scale(1.06);z-index:-2}
+.strand .glass::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(115deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.06) 28%,rgba(255,255,255,0) 50%,rgba(255,255,255,.08) 100%),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px),
+    rgba(20,20,20,.5);
+  -webkit-backdrop-filter:blur(14px) saturate(.8);backdrop-filter:blur(14px) saturate(.8)}
+.strand .glass .etch{color:rgba(238,237,232,.8);font-size:13px;line-height:20px;margin:0;
+  text-shadow:0 -1px 0 rgba(0,0,0,.55),0 1px 0 rgba(255,255,255,.16);letter-spacing:.1px}
+.strand .glass .etch b{display:block;font-family:var(--display);font-weight:400;font-size:17px;letter-spacing:1px;margin-bottom:8px;color:rgba(238,237,232,.72)}
+.strand .glass .hint{position:absolute;bottom:14px;right:16px;font-size:10px;letter-spacing:2.5px;color:rgba(238,237,232,.45);text-shadow:0 -1px 0 rgba(0,0,0,.5)}
+.strand .cell{transform-origin:50% 100%;transition:transform .7s cubic-bezier(.2,.8,.2,1),box-shadow .7s;will-change:transform}
+.strand:hover .cell,.strand:focus-within .cell,.strand.open .cell{transform:translateY(-82%) rotateX(6deg);box-shadow:0 30px 50px -18px rgba(0,0,0,.85)}
+.strand .glass{transform:translateY(10px);opacity:.0;transition:transform .7s cubic-bezier(.2,.8,.2,1) .05s,opacity .5s .05s}
+.strand:hover .glass,.strand:focus-within .glass,.strand.open .glass{transform:none;opacity:1}
+@media (hover:none){.strand .cell{transition-duration:.5s}}
 .cell{border:1px solid var(--paper);padding:0;min-width:0;display:flex;flex-direction:column;background:var(--ink);position:relative;overflow:hidden}
 .cell .fig{height:180px;background-size:cover;background-position:center;border-bottom:1px solid var(--paper);filter:grayscale(1) contrast(1.1)}
 .cell .fig.c1{background-image:url("img/strand_sakuya.jpg");filter:none}
@@ -177,21 +197,30 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
     <p>Our work runs in strands. Each strand is named for a deity, carries its own palette, and holds products, tools and research for one part of the XX body's life.</p>
   </div>
   <section class="ledger" aria-label="Strands">
-    <div class="cell"><div class="fig c1"></div><div class="body">
+    <div class="strand" style="--pane:url(img/strand_sakuya.jpg)" tabindex="0" aria-expanded="false">
+      <div class="glass" aria-hidden="true"><span class="hint">ETCHED · SAKUYA</span><p class="etch"><b>Sakuya</b>Konohanasakuya-hime is the Shinto goddess of Mount Fuji and the cherry blossom, who walked into fire to prove her children were true and came out holding them. She is the one you ask for a safe birth. The Sakuya strand is nutrition for conception and pregnancy, starting with a prenatal you'd actually want to drink.</p></div>
+      <div class="cell"><div class="fig c1"></div><div class="body">
       <div class="kicker">STRAND · PERINATAL</div>
       <h2>Sakuya</h2>
       <p>Nutrition for conception and pregnancy. First release: Sakuya Matcha, a complete prenatal you froth into milk.</p>
       <div class="status"><span class="dot"></span>SAKUYA MATCHA · IN FORMULATION</div></div></div>
-    <div class="cell"><div class="fig c4"></div><div class="body">
+    </div>
+    <div class="strand" style="--pane:url(img/strand_hathor.jpg)" tabindex="0" aria-expanded="false">
+      <div class="glass" aria-hidden="true"><span class="hint">ETCHED · HATHOR</span><p class="etch"><b>Hathor</b>Hathor is the Egyptian goddess of mothers, music and joy, shown with cow horns around the sun; she nursed Horus and every king who claimed her, and her temple at Dendera had a birth house built beside it. She is the goddess of the days after. The Hathor strand covers recovery, feeding and the first year: a free tracker, a postnatal made for after birth, a lactation formula, and the hormone research nobody has done.</p></div>
+      <div class="cell"><div class="fig c4"></div><div class="body">
       <div class="kicker">STRAND · POSTPARTUM</div>
       <h2>Hathor</h2>
       <p>Birth onward: recovery, feeding and the first year. A free tracker for the days, a postnatal made for after (not a prenatal continued), a lactation formula, and the hormone work nobody has done.</p>
       <div class="status"><span class="dot"></span>TRACKER IN BUILD</div></div></div>
-    <div class="cell"><div class="fig c2"></div><div class="body">
+    </div>
+    <div class="strand" style="--pane:url(img/strand_shikhandi.jpg)" tabindex="0" aria-expanded="false">
+      <div class="glass" aria-hidden="true"><span class="hint">ETCHED · SHIKHANDI</span><p class="etch"><b>Shikhandi</b>In the Mahabharata, Shikhandi was born a daughter of Panchala, raised as a prince, and became a man in body as well as name; he commanded an army at Kurukshetra and was the reason the invincible Bhishma fell. He lived, married and fathered a son as the man he was. The Shikhandi strand is for XX men: a free tracker first, then clinical products built around life on testosterone.</p></div>
+      <div class="cell"><div class="fig c2"></div><div class="body">
       <div class="kicker">STRAND · XX MEN</div>
       <h2>Shikhandi</h2>
       <p>Products and tools for XX men. Opens with a free tracker, then clinical products built around life on testosterone.</p>
       <div class="status"><span class="dot"></span>PLANNING</div></div></div>
+    </div>
   </section>
 
   <section class="research" id="research" aria-label="Research">
@@ -265,6 +294,12 @@ form.addEventListener('submit',async e=>{
     if(r.status===202||r.ok){msg.textContent='Subscribed. Check your inbox to confirm.';form.reset()}else{msg.textContent='That did not go through. Try again, or email olli@herabio.tech.'}
   }catch(_){msg.textContent='No connection. Try again in a moment.'}
   btn.disabled=false;
+});
+</script>
+<script>
+document.querySelectorAll('.strand').forEach(el=>{
+  el.addEventListener('click',e=>{if(matchMedia('(hover:none)').matches||e.detail===0){const o=el.classList.toggle('open');el.setAttribute('aria-expanded',o)}});
+  el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();const o=el.classList.toggle('open');el.setAttribute('aria-expanded',o)}});
 });
 </script>
 </body>

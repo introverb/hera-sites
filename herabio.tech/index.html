@@ -58,14 +58,14 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .lockup{width:min(100%,560px);height:auto;color:var(--paper)}
 .sub{font-family:var(--display);font-size:clamp(22px,3vw,34px);line-height:1;letter-spacing:14px;margin-top:-10px}
 .descriptor{font-weight:800;letter-spacing:5px;font-size:13px;line-height:20px;color:var(--paper-dim)}
-.lede{font-family:var(--display);font-size:clamp(24px,3.6vw,38px);line-height:1.2;max-width:20ch;text-wrap:balance;letter-spacing:1px;margin:0}
+.lede{font-family:var(--mono);font-weight:400;font-size:clamp(18px,2.1vw,26px);line-height:1.3;letter-spacing:1px;margin:0;white-space:nowrap}
 .hero-copy p{max-width:54ch;margin:0;color:var(--paper-dim)}
 .hero-art{position:relative;aspect-ratio:5/6;width:100%}
 .seeds{position:absolute;z-index:1;right:0;top:0;width:68%;aspect-ratio:3/4;background:url("img/seeds.jpg") center/cover;transform:rotate(2.5deg);box-shadow:0 18px 40px rgba(0,0,0,.6)}
 .seeds::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(20,20,20,.75))}
 .print{position:absolute;left:4%;bottom:16px;width:52%;z-index:2;transform:rotate(-2deg);background:var(--paper);padding:8px;box-shadow:0 22px 50px rgba(0,0,0,.75)}
 .print img{display:block;width:100%;height:auto;mix-blend-mode:multiply}
-.feather{position:absolute;left:22.5%;top:-9.5%;width:30%;z-index:0;transform:rotate(-43deg);transform-origin:50% 50%;filter:drop-shadow(0 14px 18px rgba(0,0,0,.7));pointer-events:none}
+.feather{position:absolute;left:52.5%;top:-9.5%;width:30%;z-index:0;transform:rotate(-43deg);transform-origin:50% 50%;filter:drop-shadow(0 14px 18px rgba(0,0,0,.7));pointer-events:none}
 .feather img{display:block;width:100%;height:auto}
 .print::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:multiply;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35 0 0 0 0 .32 0 0 0 0 .28 0 0 0 .22 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>") 0 0/300px 300px,linear-gradient(118deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.05) 60%,rgba(0,0,0,0) 80%)}
 .tape.k{background:#101010;opacity:.92;box-shadow:0 1px 2px rgba(0,0,0,.6);z-index:4}
@@ -161,7 +161,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
 <path id="heraWM" d="M413 586H1326V0H1586V1434H1326V848H413V1434H153V0H413ZM3069 848H2248V586H3069ZM3186 1434H2248Q2194 1434 2130.0 1415.0Q2066 1396 2011.5 1352.5Q1957 1309 1920.5 1239.5Q1884 1170 1884 1069V131Q1884 104 1894.0 80.0Q1904 56 1921.5 38.0Q1939 20 1963.0 10.0Q1987 0 2015 0H3186V260H2144V1069Q2144 1120 2171.0 1147.0Q2198 1174 2250 1174H3186ZM4870 482Q4870 571 4848.0 641.0Q4826 711 4788.5 764.5Q4751 818 4702.0 856.0Q4653 894 4599.5 918.5Q4546 943 4491.5 954.0Q4437 965 4389 965L4932 1434H4530L3988 965H3801V705H4389Q4438 701 4478.5 684.5Q4519 668 4548.5 640.0Q4578 612 4594.0 572.5Q4610 533 4610 482V318Q4610 296 4604.5 284.5Q4599 273 4590.5 267.5Q4582 262 4572.5 261.0Q4563 260 4555 260H3697V1434H3437V131Q3437 104 3447.0 80.0Q3457 56 3474.5 38.0Q3492 20 3516.0 10.0Q3540 0 3568 0H4555Q4642 0 4702.0 31.5Q4762 63 4799.5 110.5Q4837 158 4853.5 213.0Q4870 268 4870 316ZM6538 1434H6278V1082H5364V1434H5104V717Q5104 560 5158.0 428.0Q5212 296 5308.0 201.0Q5404 106 5535.0 53.0Q5666 0 5821 0H6407Q6434 0 6458.0 10.0Q6482 20 6500.0 38.0Q6518 56 6528.0 80.0Q6538 104 6538 131ZM5364 822H6278V260H5821Q5809 260 5770.5 263.5Q5732 267 5681.5 281.0Q5631 295 5575.0 324.0Q5519 353 5472.0 404.0Q5425 455 5394.5 531.5Q5364 608 5364 717Z"/>
 <g id="heraMark"><path d="M9.065,9.065 H68.935 A22,22 0 0 1 90.935,31.065 V68.935 A22,22 0 0 1 68.935,90.935 H31.065 A22,22 0 0 1 9.065,68.935 Z" fill="none" stroke="currentColor" stroke-width="18.13" stroke-linejoin="miter"/><g fill="currentColor"><path d="M13.87,-6 V-18 H26 A5,5 0 0 1 32,-13 V-6 Z"/><path d="M40.935,-6 V-28 H54.065 A5,5 0 0 1 59.065,-23 V-6 Z"/><path d="M68,-6 V-18 H81.13 A5,5 0 0 1 86.13,-13 V-6 Z"/></g></g>
 <g id="heraMarkO" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="miter"><path d="M9.065,9.065 H68.935 A22,22 0 0 1 90.935,31.065 V68.935 A22,22 0 0 1 68.935,90.935 H31.065 A22,22 0 0 1 9.065,68.935 Z"/><path d="M13.87,-6 V-18 H26 A5,5 0 0 1 32,-13 V-6 Z"/><path d="M40.935,-6 V-28 H54.065 A5,5 0 0 1 59.065,-23 V-6 Z"/><path d="M68,-6 V-18 H81.13 A5,5 0 0 1 86.13,-13 V-6 Z"/></g>
-<g id="heraLockup"><use href="#heraWM" fill="currentColor"/><g transform="translate(7355 0) scale(14.34)"><use href="#heraMarkO"/></g></g>
+<g id="heraLockup"><use href="#heraWM" fill="currentColor"/><g transform="translate(7355 0) scale(14.34)"><use href="#heraMark"/></g></g>
 </defs></svg>
 
 <div class="wrap">

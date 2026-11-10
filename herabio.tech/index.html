@@ -87,10 +87,10 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .ledger{display:grid;grid-template-columns:1fr;gap:24px}
 .cell{border:1px solid var(--paper);padding:0;min-width:0;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);background:var(--ink);position:relative;overflow:hidden}
 .cell .fig{min-height:260px;background-size:cover;background-position:center;border-right:1px solid var(--paper);filter:grayscale(1) contrast(1.1)}
-.cell .fig.c1{background-image:url("img/strand_sakuya.jpg");filter:none}
-.cell .fig.c2{background-image:url("img/strand_shikhandi.jpg");filter:none}
+.cell .fig.c1{background-image:url("img/strand_sakuya.gif");filter:none}
+.cell .fig.c2{background-image:url("img/strand_shikhandi.gif");filter:none}
 .cell .fig.c3{background-image:url("img/nike.jpg")}
-.cell .fig.c4{background-image:url("img/strand_hathor.jpg");filter:none}
+.cell .fig.c4{background-image:url("img/strand_hathor.gif");filter:none}
 /* RESEARCH ROW */
 .research{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:0;border:1px solid var(--paper);background:var(--ink)}
 .research .rfig{min-height:260px;background:url("img/columns.jpg") center/cover;filter:grayscale(1) contrast(1.1);border-right:1px solid var(--paper)}
@@ -149,6 +149,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
   .ledger,.swatches,.story,.signup{grid-template-columns:1fr}
   .wrap{gap:64px}
 }
+@media (prefers-reduced-motion:reduce){.cell .fig.c1{background-image:url("img/strand_sakuya.jpg")}.cell .fig.c4{background-image:url("img/strand_hathor.jpg")}.cell .fig.c2{background-image:url("img/strand_shikhandi.jpg")}}
 @media (prefers-reduced-motion:no-preference){
   .print{animation:pin .9s cubic-bezier(.2,.8,.2,1) both}
   @keyframes pin{from{transform:translateY(14px) rotate(-3.5deg)}to{transform:rotate(-2deg)}}

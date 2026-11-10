@@ -13,7 +13,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=JetBrains+Mono:wght@400;600;800&family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=JetBrains+Mono:wght@400;600;800&family=Noto+Sans+JP:wght@700&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Devanagari:wght@600&display=swap" rel="stylesheet">
 <style>
 /* Field-notebook collage on black grid paper. Hero = the Hera sketch, pinned like a specimen. Pomegranate red is the only colour. */
 :root{
@@ -116,7 +116,12 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .research li b{color:var(--paper);font-weight:800}
 @media (max-width:820px){.research,.cell{grid-template-columns:1fr}.research .rfig,.cell .fig{min-height:160px;border-right:0;border-bottom:1px solid var(--paper)}}
 .cell .body{padding:28px 32px;display:flex;flex-direction:column;gap:12px}
-.cell h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(22px,3vw,30px);letter-spacing:1px}
+.cell h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(26px,3.4vw,36px);letter-spacing:4px;line-height:1}
+.cell .deity{display:flex;align-items:baseline;gap:10px;font-size:11px;letter-spacing:2px;color:var(--paper-dim);margin-top:-2px}
+.cell .deity .glyph{font-size:18px;line-height:1;letter-spacing:0;color:var(--paper)}
+.cell .deity .glyph.jp{font-family:var(--jp);font-weight:700}
+.cell .deity .glyph.eg{font-family:'Noto Sans Egyptian Hieroglyphs',serif;font-size:22px}
+.cell .deity .glyph.dv{font-family:'Noto Sans Devanagari',sans-serif;font-weight:600}
 .cell p{margin:0;color:var(--paper-dim);max-width:62ch}
 .cell .status,.research .status{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;margin-top:auto;padding-top:6px}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--pom-bright);flex:none}
@@ -202,7 +207,8 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
       <div class="glass" aria-hidden="true"><span class="hint">ETCHED · SAKUYA</span><p class="etch"><b>Sakuya</b>Konohanasakuya-hime is the Shinto goddess of Mount Fuji and the cherry blossom, who walked into fire to prove her children were true and came out holding them. She is the one you ask for a safe birth. The Sakuya strand is nutrition for conception and pregnancy, starting with a prenatal you'd actually want to drink.</p></div>
       <div class="cell"><div class="fig c1"></div><div class="body">
       <div class="kicker">STRAND · PERINATAL</div>
-      <h2>Sakuya</h2>
+      <h2>SAKU</h2>
+      <div class="deity"><span class="glyph jp" lang="ja">木花咲耶姫</span><span>KONOHANASAKUYA-HIME</span></div>
       <p>Nutrition for conception and pregnancy. First release: Sakuya Matcha, a complete prenatal you froth into milk.</p>
       <div class="status"><span class="dot"></span>SAKUYA MATCHA · IN FORMULATION</div></div></div>
     </div>
@@ -210,7 +216,8 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
       <div class="glass" aria-hidden="true"><span class="hint">ETCHED · HATHOR</span><p class="etch"><b>Hathor</b>Hathor is the Egyptian goddess of mothers, music and joy, shown with cow horns around the sun; she nursed Horus and every king who claimed her, and her temple at Dendera had a birth house built beside it. She is the goddess of the days after. The Hathor strand covers recovery, feeding and the first year: a free tracker, a postnatal made for after birth, a lactation formula, and the hormone research nobody has done.</p></div>
       <div class="cell"><div class="fig c4"></div><div class="body">
       <div class="kicker">STRAND · POSTPARTUM</div>
-      <h2>Hathor</h2>
+      <h2>HATH</h2>
+      <div class="deity"><span class="glyph eg" lang="egy">𓉡</span><span>HATHOR · ḤWT-ḤR</span></div>
       <p>Birth onward: recovery, feeding and the first year. A free tracker for the days, a postnatal made for after (not a prenatal continued), a lactation formula, and the hormone work nobody has done.</p>
       <div class="status"><span class="dot"></span>TRACKER IN BUILD</div></div></div>
     </div>
@@ -218,7 +225,8 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
       <div class="glass" aria-hidden="true"><span class="hint">ETCHED · SHIKHANDI</span><p class="etch"><b>Shikhandi</b>In the Mahabharata, Shikhandi was born a daughter of Panchala, raised as a prince, and became a man in body as well as name; he commanded an army at Kurukshetra and was the reason the invincible Bhishma fell. He lived, married and fathered a son as the man he was. The Shikhandi strand is for XX men: a free tracker first, then clinical products built around life on testosterone.</p></div>
       <div class="cell"><div class="fig c2"></div><div class="body">
       <div class="kicker">STRAND · XX MEN</div>
-      <h2>Shikhandi</h2>
+      <h2>KHANDI</h2>
+      <div class="deity"><span class="glyph dv" lang="sa">शिखण्डी</span><span>SHIKHANDI</span></div>
       <p>Products and tools for XX men. Opens with a free tracker, then clinical products built around life on testosterone.</p>
       <div class="status"><span class="dot"></span>PLANNING</div></div></div>
     </div>

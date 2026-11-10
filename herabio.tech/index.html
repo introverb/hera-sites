@@ -74,9 +74,10 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 
 
 /* LEDGER */
-.strands-head{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:40px;align-items:end;margin-bottom:-56px}
+.strands-head{margin-bottom:-64px}
 .strands-head h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(22px,3vw,30px);letter-spacing:1px}
-.strands-head p{margin:0;color:var(--paper-dim);max-width:60ch}
+.strands-head p{margin:0;color:var(--paper-dim);max-width:64ch}
+.strands-head p b{color:var(--paper);font-weight:800}
 .cell .kicker,.research .kicker{font-size:10px;letter-spacing:2.5px;color:var(--paper-dim)}
 .ledger{display:grid;grid-template-columns:1fr;gap:24px}
 .cell{border:1px solid var(--paper);padding:0;min-width:0;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);background:var(--ink);position:relative;overflow:hidden}
@@ -179,8 +180,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
 
 
   <div class="strands-head" id="strands">
-    <h2>Strands</h2>
-    <p>Our work runs in strands. Each strand is named for a deity, carries its own palette, and holds products, tools and research for one part of the XX body's life.</p>
+    <p>Our work runs in <b>strands</b>. Each strand is named for a deity, carries its own palette, and holds products, tools and research for one part of the XX body's life.</p>
   </div>
   <section class="ledger" aria-label="Strands">
       <div class="cell"><div class="fig c1"></div><div class="body">

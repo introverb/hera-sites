@@ -39,6 +39,9 @@ EXTRA_CSS = '''
 .shero .status .dot{width:7px;height:7px;border-radius:50%;background:var(--acc);display:inline-block}
 .sart{position:relative;aspect-ratio:1/1;width:clamp(380px,calc(100vh - 220px),100%);max-width:100%;margin-left:auto}
 .sbar{height:150px;margin-top:-24px;background:var(--arch) center/cover;border:1px solid var(--paper)}
+.sbar.in{display:none}
+/* desktop: bar sits in the copy column, right above the strand name (Olli's bar-lab values: 47.6% wide ≈ column, 79px tall) */
+@media (min-width:1025px){.sbar.top{display:none}.sbar.in{display:block;height:79px;margin:0 0 10px;width:100%}}
 @media (prefers-reduced-motion:reduce){.sbar{background-image:var(--archs)}}
 @media (min-width:641px) and (max-width:1024px){.sbar{height:120px;margin-top:-16px}}
 @media (max-width:640px){.sbar{height:96px;margin-top:-12px}}
@@ -139,9 +142,10 @@ for key, d in STRANDS.items():
     items=''.join(f'''    <div class="item{' soon' if soon else ''}"><div class="k">{k}</div><h3>{n}</h3><p>{t}</p><div class="status"><span class="dot"></span>{st}</div></div>\n''' for k,n,t,st,soon in d['items'])
     research=''.join(f'<li><b>{a}</b> {b}</li>' for a,b in d['research'])
     body=f'''
-  <div class="sbar" aria-hidden="true"></div>
+  <div class="sbar top" aria-hidden="true"></div>
   <section class="shero">
     <div class="copy">
+      <div class="sbar in" aria-hidden="true"></div>
       <div class="kicker">{d['kicker']}</div>
       <h1>{d['name']}</h1>
       <div class="deity"><span class="glyph {d['gcls']}" lang="{d['lang']}">{d['glyph']}</span><span>{d['full']}</span></div>

@@ -15,7 +15,7 @@ NAV = [('index.html','HERA'),('saku.html','SAKU'),('hath.html','HATH'),('khandi.
 
 def topbar(current):
     links=''.join(f'<a href="{h}"{" aria-current=\"page\"" if h==current else ""}>{t}</a>' for h,t in NAV)
-    return (f'<div class="topbar"><nav aria-label="Site">{links}</nav>'
+    return (f'<div class="topbar"><button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sitenav"><span></span><span></span><span></span></button><nav id="sitenav" aria-label="Site">{links}</nav>'
             '<a href="index.html" aria-label="Hera home"><svg class="lockup-of" viewBox="153 -459 8636 1893" role="img" aria-label="HERA"><use href="#heraLockupOF"/></svg></a></div>')
 
 EXTRA_CSS = '''
@@ -72,6 +72,7 @@ EXTRA_CSS = '''
 .about .founder{grid-template-columns:minmax(0,4fr) minmax(0,1fr);gap:40px;align-items:start}
 .about .founder .fprint{padding:6px 6px 22px}.about .founder .fprint .cap{font-size:7px;letter-spacing:1px;white-space:nowrap;left:8px;bottom:7px}
 .about .founder .txt p{max-width:72ch}
+.about .founder{margin-top:48px}
 .about .founder .txt{order:-1}
 @media (min-width:641px) and (max-width:1024px){.shero{gap:28px;min-height:0}.sart{width:100%}.roster{grid-template-columns:repeat(2,minmax(0,1fr))}.about .founder{grid-template-columns:minmax(0,3fr) minmax(0,1fr)}}
 @media (max-width:640px){.shero{grid-template-columns:1fr;min-height:0;margin-top:-20px}.sart{width:100%}.roster{grid-template-columns:1fr}.sec-head{margin-bottom:-40px}.about .founder{grid-template-columns:1fr}.about .founder .fprint{margin-left:0;max-width:190px}}
@@ -134,6 +135,7 @@ def page(title, current, body, extra_style=''):
 {body}
   {footer}
 </div>
+<script>(function(){{const b=document.querySelector('.burger');if(!b)return;b.addEventListener('click',()=>{{const o=b.closest('.topbar').classList.toggle('open');b.setAttribute('aria-expanded',o)}})}})();</script>
 </body>
 </html>
 '''

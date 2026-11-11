@@ -32,7 +32,7 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html,body{margin:0}
+html,body{margin:0;overflow-x:clip}
 body{
   background-color:var(--ink);
   background-image:
@@ -54,7 +54,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .topbar{display:flex;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:2px}
 .topbar nav{display:flex;gap:22px;flex-wrap:wrap}
 .topbar nav a{text-decoration:none;color:var(--paper-dim)}
-.topbar nav a:hover,.topbar nav a:first-child{color:var(--paper)}
+.topbar nav a:hover,.topbar nav a[aria-current]{color:var(--paper)}
 .topbar .lockup-of{width:150px;height:auto;color:var(--paper);display:block}
 @media (max-width:820px){.topbar nav{gap:14px;font-size:11px}.topbar .lockup-of{width:110px}}
 .topbar .jp{font-family:var(--jp);font-weight:700}
@@ -110,7 +110,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .research li b{color:var(--paper);font-weight:800}
 @media (max-width:820px){.research,.cell{grid-template-columns:1fr}.research .rfig,.cell .fig{min-height:160px;border-right:0;border-bottom:1px solid var(--paper)}}
 .cell .body{padding:28px 32px;display:flex;flex-direction:column;gap:12px}
-.cell h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(26px,3.4vw,36px);letter-spacing:4px;line-height:1}
+.cell h2 a{color:inherit;text-decoration:none}.cell h2 a:hover{text-decoration:underline}.cell h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(26px,3.4vw,36px);letter-spacing:4px;line-height:1}
 .cell .deity{display:flex;align-items:baseline;gap:10px;font-size:11px;letter-spacing:2px;color:var(--paper-dim);margin-top:-2px}
 .cell .deity .glyph{font-size:18px;line-height:1;letter-spacing:0;color:var(--paper)}
 .cell .deity .glyph.jp{font-family:var(--jp);font-weight:700}
@@ -192,7 +192,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
 
 <div class="wrap" id="top">
   <span class="reg" style="left:-34px;top:30px"></span><span class="reg" style="right:-34px;top:30px"></span>
-  <div class="topbar"><span></span><a href="#top" aria-label="Hera home"><svg class="lockup-of" viewBox="153 -459 8636 1893" role="img" aria-label="HERA"><use href="#heraLockupOF"/></svg></a></div>
+  <div class="topbar"><nav aria-label="Site"><a href="index.html" aria-current="page">HERA</a><a href="saku.html">SAKU</a><a href="hath.html">HATH</a><a href="khandi.html">KHANDI</a><a href="about.html">ABOUT</a></nav><a href="#top" aria-label="Hera home"><svg class="lockup-of" viewBox="153 -459 8636 1893" role="img" aria-label="HERA"><use href="#heraLockupOF"/></svg></a></div>
 
   <section class="hero">
     <div class="hero-copy">
@@ -217,21 +217,21 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
   <section class="ledger" aria-label="Strands">
       <div class="cell"><div class="fig c1"></div><div class="body">
       <div class="kicker">STRAND · PERINATAL</div>
-      <h2>SAKU</h2>
+      <h2><a href="saku.html">SAKU</a></h2>
       <div class="deity"><span class="glyph jp" lang="ja">木花咲耶姫</span><span>KONOHANASAKUYA-HIME</span></div>
       <p>Nutrition for conception and pregnancy. First release: Sakuya Matcha, a complete prenatal you froth into milk.</p>
       <div class="status"><span class="dot"></span>SAKUYA MATCHA · IN FORMULATION</div>
       <p class="lore">Konohanasakuya-hime, goddess of Mount Fuji and the cherry blossom. Accused of carrying another man's children, she walked into fire to prove them true, and walked out holding them. The SAKU strand is nutrition for conception and pregnancy.</p></div></div>
       <div class="cell"><div class="fig c4"></div><div class="body">
       <div class="kicker">STRAND · POSTPARTUM</div>
-      <h2>HATH</h2>
+      <h2><a href="hath.html">HATH</a></h2>
       <div class="deity"><span class="glyph eg" lang="egy">𓉡</span><span>HATHOR · ḤWT-ḤR</span></div>
       <p>Birth onward: recovery, feeding and the first year. A free tracker, a postnatal made for after (not a prenatal continued), and the hormone work nobody has done.</p>
       <div class="status"><span class="dot"></span>TRACKER IN BUILD</div>
       <p class="lore">Hathor, goddess of mothers, music and joy, horns around the sun. She nursed Horus and every king after him; at Dendera a birth house stands beside her temple. The HATH strand is recovery, feeding and the first year.</p></div></div>
       <div class="cell"><div class="fig c2"></div><div class="body">
       <div class="kicker">STRAND · XX MEN</div>
-      <h2>KHANDI</h2>
+      <h2><a href="khandi.html">KHANDI</a></h2>
       <div class="deity"><span class="glyph dv" lang="sa">शिखण्डी</span><span>SHIKHANDI</span></div>
       <p>Products and tools for XX men. Opens with a free tracker, then clinical products built around life on testosterone.</p>
       <div class="status"><span class="dot"></span>PLANNING</div>
@@ -264,19 +264,10 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
       <h3>Why biotech</h3>
       <p>For most of modern medicine, the XX body was studied by studying men and scaling down. The result is dosing that was never tested on us, supplements that cannot be absorbed, whole stages of life that get no real research, and products that talk down to the people who buy them. Half of humanity is not a niche. So we run the trials nobody ran, and we publish the proof: third-party test results for every lot, and the design of every study we run, so you never have to take our word for it.</p>
       <h3>How we work</h3>
-      <p>We study the XX body on its own terms. No stage is minor. Every seed counts: many small, exacting things add up to a life. Our first product is a prenatal because that is where the founder, a designer in Brooklyn, found the gap first. The strands that follow reach the rest.</p>
+      <p>We study the XX body on its own terms. No stage is minor. Every seed counts: many small, exacting things add up to a life. Our first product is a prenatal because that is where the founder, a biohacker in Brooklyn, found the gap first. The strands that follow reach the rest.</p>
     </div>
   </section>
 
-
-  <section class="founder" id="founder">
-    <div class="fprint"><span class="tape" style="left:-22px;top:18px;transform:rotate(-8deg)"></span><img src="img/founder.jpg" alt="Olivia Payne Anders, founder of Hera Biotech" width="900" height="1125" loading="lazy"><span class="cap">OLIVIA PAYNE ANDERS · FOUNDER</span></div>
-    <div class="txt">
-      <h2>Founder</h2>
-      <p class="lead">Hera started with a prenatal Olli could not swallow. A biohacker who could not take pills and could not stand the taste of the powders, she mixed hers into matcha lattes through a whole pregnancy, and only afterwards learned that the milk and the tea had been blocking what she was trying to absorb. Baffled, frustrated and inspired all at once, she created Sakuya Matcha, and the questions behind it became Hera.</p>
-      <p>Olivia Payne Anders is a biohacker and founder in Brooklyn. She works in decentralized science with the <a href="https://www.quantumbiology.xyz" rel="noopener">Quantum Biology DAO</a>, and runs the <a href="https://futureaesthetics.foundation" rel="noopener">Foundation for Future Aesthetics</a>, a Brooklyn nonprofit for art about the future. Hera Biotech is a company of Eidos/Ideas LLC.</p>
-    </div>
-  </section>
 
   <section class="signup" id="signup">
     <div>

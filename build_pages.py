@@ -23,7 +23,7 @@ EXTRA_CSS = '''
 .topbar nav{display:flex;gap:22px;flex-wrap:wrap}
 .topbar nav a{text-decoration:none;color:var(--paper-dim)}
 .topbar nav a:hover,.topbar nav a[aria-current]{color:var(--paper)}
-@media (max-width:820px){.topbar nav{gap:14px;font-size:11px}}
+@media (max-width:640px){.topbar nav{gap:14px;font-size:11px}}
 .shero{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:40px;align-items:center;min-height:min(70vh,700px)}
 .shero .copy{display:flex;flex-direction:column;gap:14px}
 .shero .kicker{font-weight:800;letter-spacing:4px;font-size:11px;color:var(--paper-dim)}
@@ -40,7 +40,8 @@ EXTRA_CSS = '''
 .sart{position:relative;aspect-ratio:1/1;width:clamp(380px,calc(100vh - 220px),100%);max-width:100%;margin-left:auto}
 .sbar{height:150px;margin-top:-24px;background:var(--arch) center/cover;border:1px solid var(--paper)}
 @media (prefers-reduced-motion:reduce){.sbar{background-image:var(--archs)}}
-@media (max-width:820px){.sbar{height:96px;margin-top:-12px}}
+@media (min-width:641px) and (max-width:1024px){.sbar{height:120px;margin-top:-16px}}
+@media (max-width:640px){.sbar{height:96px;margin-top:-12px}}
 .sart .pr{position:absolute;right:0;top:0;width:52%;aspect-ratio:4/5;background:var(--print) center/cover;box-shadow:0 18px 40px rgba(0,0,0,.6);transform:rotate(2.5deg);z-index:1;border:6px solid var(--paper);border-bottom-width:28px}
 .sart .obj{position:absolute;left:var(--ox);top:var(--oy);width:var(--ow);z-index:0;transform:rotate(var(--orot));transform-origin:50% 50%;filter:drop-shadow(0 14px 18px rgba(0,0,0,.7))}
 .sart .obj img{display:block;width:100%;height:auto}
@@ -69,7 +70,8 @@ EXTRA_CSS = '''
 .about .founder .fprint{padding:6px 6px 22px}.about .founder .fprint .cap{font-size:7px;letter-spacing:1px;white-space:nowrap;left:8px;bottom:7px}
 .about .founder .txt p{max-width:72ch}
 .about .founder .txt{order:-1}
-@media (max-width:820px){.shero{grid-template-columns:1fr;min-height:0;margin-top:-20px}.sart{width:100%}.roster{grid-template-columns:1fr}.sec-head{margin-bottom:-40px}.about .founder{grid-template-columns:1fr}.about .founder .fprint{margin-left:0;max-width:190px}}
+@media (min-width:641px) and (max-width:1024px){.shero{gap:28px;min-height:0}.sart{width:100%}.roster{grid-template-columns:repeat(2,minmax(0,1fr))}.about .founder{grid-template-columns:minmax(0,3fr) minmax(0,1fr)}}
+@media (max-width:640px){.shero{grid-template-columns:1fr;min-height:0;margin-top:-20px}.sart{width:100%}.roster{grid-template-columns:1fr}.sec-head{margin-bottom:-40px}.about .founder{grid-template-columns:1fr}.about .founder .fprint{margin-left:0;max-width:190px}}
 '''
 
 STRANDS = {

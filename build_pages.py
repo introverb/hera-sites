@@ -24,7 +24,7 @@ EXTRA_CSS = '''
 .topbar nav a{text-decoration:none;color:var(--paper-dim)}
 .topbar nav a:hover,.topbar nav a[aria-current]{color:var(--paper)}
 @media (max-width:820px){.topbar nav{gap:14px;font-size:11px}}
-.shero{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:40px;align-items:center;margin-top:-24px;min-height:min(72vh,720px)}
+.shero{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:40px;align-items:center;min-height:min(70vh,700px)}
 .shero .copy{display:flex;flex-direction:column;gap:14px}
 .shero .kicker{font-weight:800;letter-spacing:4px;font-size:11px;color:var(--paper-dim)}
 .shero h1{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(48px,8vw,96px);letter-spacing:6px;line-height:1}
@@ -38,8 +38,13 @@ EXTRA_CSS = '''
 .shero .status{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;color:var(--paper-dim)}
 .shero .status .dot{width:7px;height:7px;border-radius:50%;background:var(--acc);display:inline-block}
 .sart{position:relative;aspect-ratio:1/1;width:clamp(380px,calc(100vh - 220px),100%);max-width:100%;margin-left:auto}
-.sart .arch{position:absolute;right:0;top:0;width:78%;aspect-ratio:10/7;background:var(--arch) center/cover;border:1px solid var(--paper);filter:none;box-shadow:0 18px 40px rgba(0,0,0,.6);transform:rotate(1.5deg)}
-.sart .char{position:absolute;left:0;bottom:0;width:46%;background:var(--paper);padding:8px 8px 26px;box-shadow:0 22px 50px rgba(0,0,0,.75);transform:rotate(-3deg)}
+.sbar{height:150px;margin-top:-24px;background:var(--arch) center/cover;border:1px solid var(--paper)}
+@media (prefers-reduced-motion:reduce){.sbar{background-image:var(--archs)}}
+@media (max-width:820px){.sbar{height:96px;margin-top:-12px}}
+.sart .pr{position:absolute;right:0;top:0;width:52%;aspect-ratio:4/5;background:var(--print) center/cover;box-shadow:0 18px 40px rgba(0,0,0,.6);transform:rotate(2.5deg);z-index:1;border:6px solid var(--paper);border-bottom-width:28px}
+.sart .obj{position:absolute;left:var(--ox);top:var(--oy);width:var(--ow);z-index:0;transform:rotate(var(--orot));transform-origin:50% 50%;filter:drop-shadow(0 14px 18px rgba(0,0,0,.7))}
+.sart .obj img{display:block;width:100%;height:auto}
+.sart .char{position:absolute;left:2%;bottom:2%;width:42%;z-index:2;background:var(--paper);padding:8px 8px 26px;box-shadow:0 22px 50px rgba(0,0,0,.75);transform:rotate(-3deg)}
 .sart .char img{display:block;width:100%;height:auto;mix-blend-mode:multiply}
 .sart .char .cap{position:absolute;left:10px;bottom:7px;font-size:9px;letter-spacing:2px;color:#555;white-space:nowrap}
 .sart .tape{position:absolute;width:74px;height:20px;background:rgba(238,237,232,.85);box-shadow:0 1px 2px rgba(0,0,0,.4);z-index:3}
@@ -70,7 +75,7 @@ EXTRA_CSS = '''
 STRANDS = {
  'saku': dict(
    title='SAKU — Hera Biotech', kicker='PRENATAL STRAND', name='SAKU', glyph='木花咲耶姫', gcls='jp', lang='ja', full='KONOHANASAKUYA-HIME',
-   acc='#A84F78', arch='img/strand_sakuya.gif', char='img/char_sakuya.jpg', cap='SAKUYA · SUBJECT 01', charw=552, charh=870,
+   acc='#A84F78', arch='img/strand_sakuya.gif', print='img/print_fuji.jpg', obj='img/obj_sprig.png', objw=643, objh=1100, ox='2%', oy='-10%', ow='40%', orot='-22deg', char='img/char_sakuya.jpg', cap='SAKUYA · SUBJECT 01', charw=552, charh=870,
    lore="Konohanasakuya-hime, goddess of Mount Fuji and the cherry blossom. Accused of carrying another man's children, she walked into fire to prove them true, and walked out holding them. The SAKU strand is nutrition for conception and pregnancy.",
    desc="Nutrition for conception and pregnancy: what the body needs before, and what it needs for the forty weeks. Every formula is built for absorption first, tested lot by lot, and published.",
    status='SAKUYA MATCHA · IN FORMULATION',
@@ -81,7 +86,7 @@ STRANDS = {
  ),
  'hath': dict(
    title='HATH — Hera Biotech', kicker='POSTPARTUM STRAND', name='HATH', glyph='𓉡', gcls='eg', lang='egy', full='HATHOR · ḤWT-ḤR',
-   acc='#17746F', arch='img/strand_hathor.gif', char='img/char_hathor.jpg', cap='HATHOR · SUBJECT 02', charw=896, charh=1344,
+   acc='#17746F', arch='img/strand_hathor.gif', print='img/print_dendera.jpg', obj='img/obj_sistrum.png', objw=411, objh=1100, ox='12%', oy='-14%', ow='28%', orot='14deg', char='img/char_hathor.jpg', cap='HATHOR · SUBJECT 02', charw=896, charh=1344,
    lore="Hathor, goddess of mothers, music and joy, horns around the sun. She nursed Horus and every king after him; at Dendera a birth house stands beside her temple. The HATH strand is recovery, feeding and the first year.",
    desc="Birth onward: recovery, feeding and the first year. A free tracker for the days, a postnatal made for after (not a prenatal continued), and the hormone work nobody has done.",
    status='TRACKER IN BUILD',
@@ -93,7 +98,7 @@ STRANDS = {
  ),
  'khandi': dict(
    title='KHANDI — Hera Biotech', kicker='XX MEN STRAND', name='KHANDI', glyph='शिखण्डी', gcls='dv', lang='sa', full='SHIKHANDI',
-   acc='#2D327F', arch='img/strand_shikhandi.gif', char='img/char_shikhandi.jpg', cap='SHIKHANDI · SUBJECT 03', charw=896, charh=1344,
+   acc='#2D327F', arch='img/strand_shikhandi.gif', print='img/print_forest.jpg', obj='img/obj_arrowhead.png', objw=332, objh=1000, ox='10%', oy='-8%', ow='26%', orot='-30deg', char='img/char_shikhandi.jpg', cap='SHIKHANDI · SUBJECT 03', charw=896, charh=1344,
    lore="Shikhandi, born a daughter of Panchala and raised a prince. When his bride's father learned the truth and marched on Panchala, Shikhandi went into the forest to die; there the yaksha Sthuna gave him his own male body in exchange for Shikhandi's. At Kurukshetra he led an army and brought down the unkillable Bhishma. The KHANDI strand is for XX men.",
    desc="Products and tools for XX men. Opens with a free tracker, then clinical products built around life on testosterone.",
    status='PLANNING',
@@ -132,6 +137,7 @@ for key, d in STRANDS.items():
     items=''.join(f'''    <div class="item{' soon' if soon else ''}"><div class="k">{k}</div><h3>{n}</h3><p>{t}</p><div class="status"><span class="dot"></span>{st}</div></div>\n''' for k,n,t,st,soon in d['items'])
     research=''.join(f'<li><b>{a}</b> {b}</li>' for a,b in d['research'])
     body=f'''
+  <div class="sbar" aria-hidden="true"></div>
   <section class="shero">
     <div class="copy">
       <div class="kicker">{d['kicker']}</div>
@@ -142,7 +148,8 @@ for key, d in STRANDS.items():
       <p class="lore">{d['lore']}</p>
     </div>
     <div class="sart" aria-hidden="true">
-      <div class="arch"></div>
+      <div class="obj"><img src="{d['obj']}" alt="" width="{d['objw']}" height="{d['objh']}"></div>
+      <div class="pr"></div>
       <div class="char"><span class="tape k" style="left:50%;top:-9px;transform:translateX(-50%) rotate(-3deg)"></span><img src="{d['char']}" alt="" width="{d['charw']}" height="{d['charh']}"><span class="cap">{d['cap']}</span></div>
     </div>
   </section>
@@ -167,7 +174,7 @@ for key, d in STRANDS.items():
     <a class="btn" href="index.html#signup">FOLLOW THE BUILD</a>
   </section>
 '''
-    style=f':root{{--acc:{d["acc"]};--arch:url("{d["arch"]}")}} .cell .dot,.research .dot{{background:var(--acc)}}'
+    style=f':root{{--acc:{d["acc"]};--arch:url("{d["arch"]}");--archs:url("{d["arch"].replace(".gif",".jpg")}");--print:url("{d["print"]}")}} .sart .obj{{--ox:{d["ox"]};--oy:{d["oy"]};--ow:{d["ow"]};--orot:{d["orot"]}}} .cell .dot,.research .dot{{background:var(--acc)}}'
     (ROOT/f'{key}.html').write_text(page(d['title'], f'{key}.html', body, style))
 
 # ---------- about ----------

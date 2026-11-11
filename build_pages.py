@@ -69,7 +69,7 @@ EXTRA_CSS = '''
 
 STRANDS = {
  'saku': dict(
-   title='SAKU — Hera Biotech', kicker='STRAND · PERINATAL', name='SAKU', glyph='木花咲耶姫', gcls='jp', lang='ja', full='KONOHANASAKUYA-HIME',
+   title='SAKU — Hera Biotech', kicker='PRENATAL STRAND', name='SAKU', glyph='木花咲耶姫', gcls='jp', lang='ja', full='KONOHANASAKUYA-HIME',
    acc='#A84F78', arch='img/strand_sakuya.gif', char='img/char_sakuya.jpg', cap='SAKUYA · SUBJECT 01', charw=552, charh=870,
    lore="Konohanasakuya-hime, goddess of Mount Fuji and the cherry blossom. Accused of carrying another man's children, she walked into fire to prove them true, and walked out holding them. The SAKU strand is nutrition for conception and pregnancy.",
    desc="Nutrition for conception and pregnancy: what the body needs before, and what it needs for the forty weeks. Every formula is built for absorption first, tested lot by lot, and published.",
@@ -80,7 +80,7 @@ STRANDS = {
    research=[('Absorption.','How XX bodies take up iron, folate and choline, and which everyday foods block them.')],
  ),
  'hath': dict(
-   title='HATH — Hera Biotech', kicker='STRAND · POSTPARTUM', name='HATH', glyph='𓉡', gcls='eg', lang='egy', full='HATHOR · ḤWT-ḤR',
+   title='HATH — Hera Biotech', kicker='POSTPARTUM STRAND', name='HATH', glyph='𓉡', gcls='eg', lang='egy', full='HATHOR · ḤWT-ḤR',
    acc='#17746F', arch='img/strand_hathor.gif', char='img/char_hathor.jpg', cap='HATHOR · SUBJECT 02', charw=896, charh=1344,
    lore="Hathor, goddess of mothers, music and joy, horns around the sun. She nursed Horus and every king after him; at Dendera a birth house stands beside her temple. The HATH strand is recovery, feeding and the first year.",
    desc="Birth onward: recovery, feeding and the first year. A free tracker for the days, a postnatal made for after (not a prenatal continued), and the hormone work nobody has done.",
@@ -92,7 +92,7 @@ STRANDS = {
              ('Lactation hormones.','Prolactin testing, hormone tracking and regulation, and D-MER (dysphoric milk ejection reflex), which almost no one has studied.')],
  ),
  'khandi': dict(
-   title='KHANDI — Hera Biotech', kicker='STRAND · XX MEN', name='KHANDI', glyph='शिखण्डी', gcls='dv', lang='sa', full='SHIKHANDI',
+   title='KHANDI — Hera Biotech', kicker='XX MEN STRAND', name='KHANDI', glyph='शिखण्डी', gcls='dv', lang='sa', full='SHIKHANDI',
    acc='#2D327F', arch='img/strand_shikhandi.gif', char='img/char_shikhandi.jpg', cap='SHIKHANDI · SUBJECT 03', charw=896, charh=1344,
    lore="Shikhandi, born a daughter of Panchala and raised a prince. When his bride's father learned the truth and marched on Panchala, Shikhandi went into the forest to die; there the yaksha Sthuna gave him his own male body in exchange for Shikhandi's. At Kurukshetra he led an army and brought down the unkillable Bhishma. The KHANDI strand is for XX men.",
    desc="Products and tools for XX men. Opens with a free tracker, then clinical products built around life on testosterone.",

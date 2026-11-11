@@ -11,6 +11,8 @@
 <meta property="og:url" content="https://herabio.tech/">
 <meta property="og:image" content="https://herabio.tech/img/hera.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=JetBrains+Mono:wght@400;600;800&family=Noto+Sans+JP:wght@700&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Devanagari:wght@600&display=swap" rel="stylesheet">
@@ -99,6 +101,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 /* RESEARCH ROW */
 .research{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:0;border:1px solid var(--paper);background:var(--ink)}
 .research .rfig{min-height:260px;background:url("img/columns.jpg") center/cover;filter:grayscale(1) contrast(1.1);border-right:1px solid var(--paper)}
+.research .partner{margin:0;color:var(--paper)}
+.research .partner a{color:var(--paper)}
 .research .rbody{padding:28px 32px;display:flex;flex-direction:column;gap:12px}
 .research h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(22px,3vw,30px);letter-spacing:1px}
 .research p{margin:0;color:var(--paper-dim);max-width:62ch}
@@ -127,6 +131,20 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .story em{font-style:italic;color:var(--paper)}
 .rule{height:1px;background:var(--paper);opacity:.35}
 
+
+[hidden]{display:none!important}
+/* founder */
+.founder{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);column-gap:40px;row-gap:24px;align-items:start}
+.founder .fprint{position:relative;background:var(--paper);padding:10px 10px 30px;box-shadow:0 22px 50px rgba(0,0,0,.75);transform:rotate(-1.5deg);max-width:380px}
+.founder .fprint img{display:block;width:100%;height:auto;filter:grayscale(.15) contrast(1.05)}
+.founder .fprint .cap{position:absolute;left:12px;bottom:8px;font-size:10px;letter-spacing:2px;color:#555}
+.founder .fprint .tape{position:absolute;width:74px;height:20px;background:rgba(238,237,232,.85);box-shadow:0 1px 2px rgba(0,0,0,.3);z-index:2}
+.founder h2{margin:0 0 14px;font-family:var(--display);font-weight:400;font-size:clamp(22px,3vw,30px);letter-spacing:1px}
+.founder .txt p{margin:0 0 14px;color:var(--paper-dim);max-width:62ch}
+.founder .txt p.lead{color:var(--paper)}
+.founder .txt a{color:var(--paper)}
+@media (max-width:820px){.founder{grid-template-columns:1fr}.founder .fprint{max-width:300px}}
+
 /* SIGNUP */
 .signup{border:1px solid var(--paper);padding:28px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;background:var(--pom-stain);position:relative;overflow:hidden}
 .signup::before{content:"";position:absolute;inset:0;background:url("img/seeds.jpg") center/cover;opacity:.22;mix-blend-mode:luminosity;pointer-events:none}
@@ -140,6 +158,7 @@ input[type=email],input[type=tel]{font:inherit;color:var(--paper);background:var
 .consent input{margin:2px 0 0;width:16px;height:16px;accent-color:var(--pom-bright)}
 button{font:inherit;font-weight:800;letter-spacing:3px;background:var(--paper);color:var(--ink);border:1px solid var(--paper);padding:13px 18px;cursor:pointer;border-radius:0}
 button:hover{background:var(--pom-bright);color:var(--paper);border-color:var(--pom-bright)}
+.privacy{margin:0;font-size:11px;line-height:16px;color:var(--light);opacity:.8}
 .msg{font-size:12px;letter-spacing:1px;min-height:18px}
 footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:11px;letter-spacing:2px;border-top:1px solid var(--paper);padding-top:16px;color:var(--paper-dim)}
 footer a{text-decoration:none}footer a:hover{text-decoration:underline}
@@ -231,6 +250,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
         <li><b>Lactation hormones.</b> Prolactin testing, hormone tracking and regulation, and D-MER (dysphoric milk ejection reflex), which almost no one has studied.</li>
         <li><b>Life on testosterone.</b> The XX body on T: what changes, what needs care, what the data says once someone collects it.</li>
       </ul>
+      <p class="partner">If you run a lab, clinic or cohort and want to work on any of these, write to <a href="mailto:olli@herabio.tech">olli@herabio.tech</a>.</p>
       <div class="status"><span class="dot"></span>AGENDA · SEEKING PARTNERS</div>
     </div>
   </section>
@@ -238,7 +258,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
   <section class="story" id="why">
     <h2>Why Hera</h2>
     <div class="txt">
-      <p class="lead">Hera was queen of Olympus: goddess of marriage, of birth, of every stage of a woman's life, and a fierce protector of what was hers. She is usually shown with a pomegranate, the old sign of fertility and abundance. We took the name because that is the standard: sovereignty over your own biology, and nothing less than the best for it.</p>
+      <p class="lead">Hera was queen of Olympus: goddess of marriage, of birth, of every stage of life, and a fierce protector of what was hers. She is usually shown with a pomegranate, the old sign of fertility and abundance. We took the name because that is the standard: sovereignty over your own biology, and nothing less than the best for it.</p>
       <h3>XX Biosciences</h3>
       <p>Science built for bodies with two X chromosomes, rather than adapted to them after the fact. Hera builds for women, XX men and nonbinary people: anyone whose body runs on XX biology. We write for the need, not the label, so you will see pregnancy, cycles, testosterone and menopause named here, and you addressed as you.</p>
       <h3>Why biotech</h3>
@@ -248,17 +268,28 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
     </div>
   </section>
 
+
+  <section class="founder" id="founder">
+    <div class="fprint"><span class="tape" style="left:-22px;top:18px;transform:rotate(-8deg)"></span><img src="img/founder.jpg" alt="Olivia Payne Anders, founder of Hera Biotech" width="900" height="1125" loading="lazy"><span class="cap">OLIVIA PAYNE ANDERS · FOUNDER</span></div>
+    <div class="txt">
+      <h2>Founder</h2>
+      <p class="lead">Hera started with a prenatal Olli could not swallow. A designer who could not take pills and could not stand the taste of the powders, she mixed hers into matcha lattes through a whole pregnancy, and only afterwards learned that the milk and the tea had been blocking what she was trying to absorb. Nobody had mentioned it. That gap became Sakuya Matcha, and the questions behind it became Hera.</p>
+      <p>Olivia Payne Anders is a designer and founder in Brooklyn. She works in <a href="https://www.desci.com" rel="noopener">decentralized science</a> as a moderator and assessor for the <a href="https://www.quantumbiology.xyz" rel="noopener">Quantum Biology DAO</a>, and runs the <a href="https://futureaesthetics.foundation" rel="noopener">Foundation for Future Aesthetics</a>, a Brooklyn nonprofit for art about the future. Hera Biotech is a company of Eidos/Ideas LLC.</p>
+    </div>
+  </section>
+
   <section class="signup" id="signup">
     <div>
       <h2>Follow the build</h2>
-      <p>Occasional email on formulation, launches and studies. Add your number for launch-day texts.</p>
+      <p>Occasional email on formulation, launches and studies. No more than one or two a month.</p>
     </div>
     <form id="form" novalidate>
       <label>EMAIL<input type="email" id="email" name="email" autocomplete="email" required placeholder="you@example.com"></label>
-      <label>MOBILE (OPTIONAL)<input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+1 212 555 0100"></label>
-      <div class="consent"><input type="checkbox" id="sms" name="sms"><label for="sms" style="display:block">Text me launch updates. By checking this box you agree to receive recurring automated marketing texts from Hera Biotech at the number provided. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to cancel.</label></div>
+      <label hidden>MOBILE (OPTIONAL)<input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+1 212 555 0100"></label>
+      <div class="consent" hidden><input type="checkbox" id="sms" name="sms"><label for="sms" style="display:block">Text me launch updates. By checking this box you agree to receive recurring automated marketing texts from Hera Biotech at the number provided. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to cancel.</label></div>
       <button type="submit" id="submit">SUBSCRIBE</button>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
+      <p class="privacy">We keep your email for Hera updates only, never sell it, and every email has an unsubscribe link.</p>
     </form>
   </section>
 

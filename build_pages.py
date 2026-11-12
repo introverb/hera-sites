@@ -59,6 +59,7 @@ EXTRA_CSS = '''
 .roster{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 .roster .item{border:1px solid var(--paper);padding:22px 22px 20px;display:flex;flex-direction:column;gap:10px;background:var(--ink);min-width:0}
 .roster .item.soon{border-style:dashed;color:var(--paper-dim)}
+.roster .item:nth-child(4){grid-column:1/-1}
 .roster .item .k{font-size:11px;letter-spacing:2.5px;font-weight:800;color:var(--paper-dim)}
 .roster .item h3{margin:0;font-family:var(--display);font-weight:400;font-size:20px;letter-spacing:1px}
 .roster .item p{margin:0;color:var(--paper-dim)}
@@ -101,20 +102,25 @@ STRANDS = {
    title='HATH — Hera Biotech', kicker='POSTPARTUM STRAND', name='HATH', glyph='𓉡', gcls='eg', lang='egy', full='HATHOR · ḤWT-ḤR',
    acc='#17746F', arch='img/strand_hathor.gif', print='img/print_dendera.jpg', obj='img/obj_sistrum.png', objw=411, objh=1100, ox='12%', oy='-14%', ow='28%', orot='14deg', char='img/char_hathor.jpg', cap='HATHOR · SUBJECT 02', charw=896, charh=1344,
    lore="Hathor, goddess of mothers, music and joy, horns around the sun. She nursed Horus and every king after him; at Dendera a birth house stands beside her temple. The HATH strand is recovery, feeding and the first year.",
-   desc="Birth onward: recovery, feeding and the first year. A free tracker, a postnatal made for after (not a prenatal continued), and the hormone work nobody has done.",
-   status='TRACKER IN BUILD',
-   items=[('TOOL · 01','Tracker','A free app for the first year: feeds, sleep, recovery, the things you will be asked about and will not remember. Name to come.','IN BUILD',False),
-          ('PRODUCT · 01','Postnatal','Made for after birth, measured directly rather than extrapolated from pregnancy.','PLANNING',False),
-          ('RESEARCH','Hormones','Prolactin testing, hormone tracking and regulation, and D-MER support.','AGENDA',True)],
-   research=[('Postnatal nutrition.','What the body needs after birth, measured directly rather than extrapolated from pregnancy.'),
-             ('Lactation hormones.','Prolactin testing, hormone tracking and regulation, and D-MER (dysphoric milk ejection reflex), which almost no one has studied.')],
+   desc="Birth onward: recovery, feeding and the first year. A postnatal made for after (not a prenatal continued), home test kits timed to the weeks that need them, and a milk reader for the kitchen counter.",
+   status='MILK READER · IN RESEARCH',
+   items=[('PRODUCT · 01','Postnatal','Made for after birth, measured directly rather than extrapolated from pregnancy. Bone loss during lactation included.','PLANNING',False),
+          ('KITS · 02','Postpartum home kits','Two kits, by timing. Weeks 0–6: blood pressure, bleeding, urine protein, hemoglobin. Months 2–6: thyroid, post-GDM glucose, ferritin. Each with a plain call-now protocol.','PLANNING',False),
+          ('DEVICE · 03','Milk composition reader','Fat, protein and calories from a few drops, at home. The NICU has the analyzer; parents have guesswork.','IN RESEARCH',False),
+          ('TOOL','Tracker','A free app for the first year: feeds, sleep, recovery, the things you will be asked about and will not remember. Name to come.','IN BUILD',True)],
+   research=[('Postnatal nutrition.','What the body needs after birth, measured directly rather than extrapolated from pregnancy; includes the 5–10% bone loss during lactation.'),
+             ('Lactation hormones.','Prolactin measured and tracked at home, hormone regulation, and D-MER (dysphoric milk ejection reflex), which almost no one has studied.'),
+             ('Milk composition at home.','NICUs have the analyzer; parents have guesswork. A home reader for fat, protein and calories.'),
+             ('Postpartum thyroiditis.','5–10% of mothers, usually missed; how to catch it at home at the right week.'),
+             ('Postpartum anemia.','Half of new mothers; a home hemoglobin and ferritin check, and iron that actually absorbs.'),
+             ('Late postpartum emergencies.','Preeclampsia and hemorrhage up to six weeks after birth, at home, with low-tech monitoring.')],
  ),
  'khandi': dict(
    title='KHANDI — Hera Biotech', kicker='XX MEN STRAND', name='KHANDI', glyph='शिखण्डी', gcls='dv', lang='sa', full='SHIKHANDI',
    acc='#2D327F', arch='img/strand_shikhandi.gif', print='img/print_forest.jpg', obj='img/obj_arrowhead.png', objw=332, objh=1000, ox='10%', oy='-8%', ow='26%', orot='-30deg', char='img/char_shikhandi.jpg', cap='SHIKHANDI · SUBJECT 03', charw=896, charh=1344,
    lore="Shikhandi, born a daughter of Panchala and raised a prince. When his bride's father learned the truth and marched on Panchala, Shikhandi went into the forest to die; there the yaksha Sthuna gave him his own male body in exchange for Shikhandi's. At Kurukshetra he led an army and brought down the unkillable Bhishma. The KHANDI strand is for XX men.",
    desc="Products and tools for XX men. Opens with a free tracker, then clinical products built around life on testosterone.",
-   status='PLANNING',
+   status='TRACKER · PLANNING',
    items=[('TOOL · 01','Tracker','A free app for life on T: doses, cycles, bloodwork, mood, the long record a clinic never keeps for you.','PLANNING',False),
           ('PRODUCT · 01','—','Clinical products built around life on testosterone. To be announced.','TBA',True),
           ('RESEARCH','Life on T','What changes, what needs care, what the data says once someone collects it.','AGENDA',True)],

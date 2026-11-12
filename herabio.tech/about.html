@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>About — Hera Biotech</title>
+<meta name="description" content="Why Hera Biotech exists, how we work, and the founder, Olivia Payne Anders. XX biosciences from Brooklyn.">
+<meta property="og:title" content="About — Hera Biotech">
+<meta property="og:description" content="Why Hera Biotech exists, how we work, and the founder, Olivia Payne Anders. XX biosciences from Brooklyn.">
+<meta property="og:url" content="https://herabio.tech/about.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=JetBrains+Mono:wght@400;600;800&family=Noto+Sans+JP:wght@700&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Devanagari:wght@600&display=swap" rel="stylesheet">
@@ -251,14 +255,14 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
 .cta{border:1px solid var(--paper);padding:26px 28px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px}
 .cta p{margin:0;max-width:60ch;color:var(--paper-dim)}
 .cta a.btn{display:inline-block;background:var(--paper);color:var(--ink);text-decoration:none;font-weight:800;letter-spacing:3px;font-size:12px;padding:12px 18px}
-.about .founder .fprint{max-width:190px;margin-left:auto}
-.about .founder{grid-template-columns:minmax(0,4fr) minmax(0,1fr);gap:40px;align-items:start}
-.about .founder .fprint{padding:6px 6px 22px}.about .founder .fprint .cap{font-size:7px;letter-spacing:1px;white-space:nowrap;left:8px;bottom:7px}
+.about .founder{grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:40px;align-items:center}
+.about .founder .fprint{max-width:190px;width:100%;margin:0 auto;justify-self:center;background:none;padding:0;box-shadow:0 22px 50px rgba(0,0,0,.75)}
+.about .founder .fprint .cap{display:none}
 .about .founder .txt p{max-width:72ch}
 .about .founder{margin-top:48px}
 .about .founder .txt{order:-1}
 @media (min-width:641px) and (max-width:1024px){.shero{gap:28px;min-height:0}.sart{width:100%}.roster{grid-template-columns:repeat(2,minmax(0,1fr))}.about .founder{grid-template-columns:minmax(0,3fr) minmax(0,1fr)}}
-@media (max-width:640px){.shero{grid-template-columns:1fr;min-height:0;margin-top:-20px}.sart{width:100%}.roster{grid-template-columns:1fr}.sec-head{margin-bottom:-40px}.about .founder{grid-template-columns:1fr}.about .founder .fprint{margin-left:0;max-width:190px}}
+@media (max-width:640px){.shero{grid-template-columns:1fr;min-height:0;margin-top:-20px}.sart{width:100%}.roster{grid-template-columns:1fr}.sec-head{margin-bottom:-40px}.about .founder{grid-template-columns:1fr}.about .founder .fprint{margin:8px auto 0;max-width:190px}}
 </style>
 </head>
 <body>
@@ -276,7 +280,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
   <div class="topbar"><button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sitenav"><span></span><span></span><span></span></button><nav id="sitenav" aria-label="Site"><a href="index.html">HERA</a><a href="saku.html">SAKU</a><a href="hath.html">HATH</a><a href="khandi.html">KHANDI</a><a href="about.html" aria-current="page">ABOUT</a></nav><a href="index.html" aria-label="Hera home"><svg class="lockup-of" viewBox="153 -459 8636 1893" role="img" aria-label="HERA"><use href="#heraLockupOF"/></svg></a></div>
 
   <div class="about">
-  <div class="sec-head" style="margin-bottom:0;margin-top:-40px"><div class="kicker" style="font-weight:800;letter-spacing:4px;font-size:11px;color:var(--paper-dim)">ABOUT</div></div>
+  <div class="sec-head" style="margin-bottom:0;margin-top:-40px"><h1 class="kicker" style="margin:0;font-family:var(--mono);font-weight:800;letter-spacing:4px;font-size:11px;color:var(--paper-dim)">ABOUT</h1></div>
   <section class="story" id="why">
     <h2>Why Hera</h2>
     <div class="txt">
@@ -307,7 +311,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
     <span><a href="mailto:olli@herabio.tech">olli@herabio.tech</a></span>
     <span><a href="shop.html">Shop · coming soon</a></span>
     <span>Brooklyn, NY</span>
-    <span class="credits">Photos via Unsplash: Mehrshad Rajabi, Hanson Lu, Josiah Lewis, Cristina Gottardi, Sahand Hoseini, Sameh (sameh_from_egypt). Sketch and feather rendered with Midjourney.</span>
+    <span class="credits">Founder photo courtesy of Olivia Payne Anders.</span>
   </footer>
 </div>
 <script>(function(){const b=document.querySelector('.burger');if(!b)return;b.addEventListener('click',()=>{const o=b.closest('.topbar').classList.toggle('open');b.setAttribute('aria-expanded',o)})})();</script>

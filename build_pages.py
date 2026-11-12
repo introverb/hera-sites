@@ -10,6 +10,9 @@ head_links = re.search(r'(<link rel="icon".*?</style>)', idx, re.S).group(1)
 fonts = re.search(r'(<link rel="preconnect".*?rel="stylesheet">)', idx, re.S).group(1)
 defs = re.search(r'(<svg width="0".*?</defs></svg>)', idx, re.S).group(1)
 footer = re.search(r'(<footer>.*?</footer>)', idx, re.S).group(1)
+import re as _re
+footer_sub = _re.sub(r'Photos via Unsplash:.*?Midjourney\.', 'Sketches, prints and objects rendered with Midjourney.', footer, flags=_re.S)
+footer_about = _re.sub(r'Photos via Unsplash:.*?Midjourney\.', 'Founder photo courtesy of Olivia Payne Anders.', footer, flags=_re.S)
 
 NAV = [('index.html','HERA'),('saku.html','SAKU'),('hath.html','HATH'),('khandi.html','KHANDI'),('about.html','ABOUT')]
 
@@ -68,14 +71,14 @@ EXTRA_CSS = '''
 .cta{border:1px solid var(--paper);padding:26px 28px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px}
 .cta p{margin:0;max-width:60ch;color:var(--paper-dim)}
 .cta a.btn{display:inline-block;background:var(--paper);color:var(--ink);text-decoration:none;font-weight:800;letter-spacing:3px;font-size:12px;padding:12px 18px}
-.about .founder .fprint{max-width:190px;margin-left:auto}
-.about .founder{grid-template-columns:minmax(0,4fr) minmax(0,1fr);gap:40px;align-items:start}
-.about .founder .fprint{padding:6px 6px 22px}.about .founder .fprint .cap{font-size:7px;letter-spacing:1px;white-space:nowrap;left:8px;bottom:7px}
+.about .founder{grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:40px;align-items:center}
+.about .founder .fprint{max-width:190px;width:100%;margin:0 auto;justify-self:center;background:none;padding:0;box-shadow:0 22px 50px rgba(0,0,0,.75)}
+.about .founder .fprint .cap{display:none}
 .about .founder .txt p{max-width:72ch}
 .about .founder{margin-top:48px}
 .about .founder .txt{order:-1}
 @media (min-width:641px) and (max-width:1024px){.shero{gap:28px;min-height:0}.sart{width:100%}.roster{grid-template-columns:repeat(2,minmax(0,1fr))}.about .founder{grid-template-columns:minmax(0,3fr) minmax(0,1fr)}}
-@media (max-width:640px){.shero{grid-template-columns:1fr;min-height:0;margin-top:-20px}.sart{width:100%}.roster{grid-template-columns:1fr}.sec-head{margin-bottom:-40px}.about .founder{grid-template-columns:1fr}.about .founder .fprint{margin-left:0;max-width:190px}}
+@media (max-width:640px){.shero{grid-template-columns:1fr;min-height:0;margin-top:-20px}.sart{width:100%}.roster{grid-template-columns:1fr}.sec-head{margin-bottom:-40px}.about .founder{grid-template-columns:1fr}.about .founder .fprint{margin:8px auto 0;max-width:190px}}
 '''
 
 STRANDS = {
@@ -94,7 +97,7 @@ STRANDS = {
    title='HATH — Hera Biotech', kicker='POSTPARTUM STRAND', name='HATH', glyph='𓉡', gcls='eg', lang='egy', full='HATHOR · ḤWT-ḤR',
    acc='#17746F', arch='img/strand_hathor.gif', print='img/print_dendera.jpg', obj='img/obj_sistrum.png', objw=411, objh=1100, ox='12%', oy='-14%', ow='28%', orot='14deg', char='img/char_hathor.jpg', cap='HATHOR · SUBJECT 02', charw=896, charh=1344,
    lore="Hathor, goddess of mothers, music and joy, horns around the sun. She nursed Horus and every king after him; at Dendera a birth house stands beside her temple. The HATH strand is recovery, feeding and the first year.",
-   desc="Birth onward: recovery, feeding and the first year. A free tracker for the days, a postnatal made for after (not a prenatal continued), and the hormone work nobody has done.",
+   desc="Birth onward: recovery, feeding and the first year. A free tracker, a postnatal made for after (not a prenatal continued), and the hormone work nobody has done.",
    status='TRACKER IN BUILD',
    items=[('TOOL · 01','Tracker','A free app for the first year: feeds, sleep, recovery, the things you will be asked about and will not remember. Name to come.','IN BUILD',False),
           ('PRODUCT · 01','Postnatal','Made for after birth, measured directly rather than extrapolated from pregnancy.','PLANNING',False),
@@ -115,13 +118,18 @@ STRANDS = {
  ),
 }
 
-def page(title, current, body, extra_style=''):
+def page(title, current, body, extra_style='', desc='', foot=None):
+    foot = foot or footer_sub
     return f'''<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title>
+<meta name="description" content="{desc}">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="https://herabio.tech/{current}">
 {fonts}
 {head_links}
 <style>{EXTRA_CSS}{extra_style}</style>
@@ -133,7 +141,7 @@ def page(title, current, body, extra_style=''):
   <span class="reg" style="left:-34px;top:30px"></span><span class="reg" style="right:-34px;top:30px"></span>
   {topbar(current)}
 {body}
-  {footer}
+  {foot}
 </div>
 <script>(function(){{const b=document.querySelector('.burger');if(!b)return;b.addEventListener('click',()=>{{const o=b.closest('.topbar').classList.toggle('open');b.setAttribute('aria-expanded',o)}})}})();</script>
 </body>
@@ -183,14 +191,14 @@ for key, d in STRANDS.items():
   </section>
 '''
     style=f':root{{--acc:{d["acc"]};--arch:url("{d["arch"]}");--archs:url("{d["arch"].replace(".gif",".jpg")}");--print:url("{d["print"]}")}} .sart .obj{{--ox:{d["ox"]};--oy:{d["oy"]};--ow:{d["ow"]};--orot:{d["orot"]}}} .cell .dot,.research .dot{{background:var(--acc)}}'
-    (ROOT/f'{key}.html').write_text(page(d['title'], f'{key}.html', body, style))
+    (ROOT/f'{key}.html').write_text(page(d['title'], f'{key}.html', body, style, desc=d['desc']))
 
 # ---------- about ----------
 story = re.search(r'(<section class="story" id="why">.*?</section>)', idx, re.S).group(1)
 founder = pathlib.Path('/tmp/claude-0/-home-claude/192c6e56-ae49-5ab3-a2ab-526c5a81bd6a/scratchpad/founder.html').read_text()
 about_body = f'''
   <div class="about">
-  <div class="sec-head" style="margin-bottom:0;margin-top:-40px"><div class="kicker" style="font-weight:800;letter-spacing:4px;font-size:11px;color:var(--paper-dim)">ABOUT</div></div>
+  <div class="sec-head" style="margin-bottom:0;margin-top:-40px"><h1 class="kicker" style="margin:0;font-family:var(--mono);font-weight:800;letter-spacing:4px;font-size:11px;color:var(--paper-dim)">ABOUT</h1></div>
   {story}
   {founder}
   </div>
@@ -199,5 +207,5 @@ about_body = f'''
     <a class="btn" href="index.html#signup">FOLLOW THE BUILD</a>
   </section>
 '''
-(ROOT/'about.html').write_text(page('About — Hera Biotech','about.html',about_body))
+(ROOT/'about.html').write_text(page('About — Hera Biotech','about.html',about_body,desc='Why Hera Biotech exists, how we work, and the founder, Olivia Payne Anders. XX biosciences from Brooklyn.',foot=footer_about))
 print('built', list(STRANDS)+['about'])

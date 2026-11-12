@@ -198,7 +198,7 @@ for key, d in STRANDS.items():
     (ROOT/f'{key}.html').write_text(page(d['title'], f'{key}.html', body, style, desc=d['desc']))
 
 # ---------- about ----------
-story = re.search(r'(<section class="story" id="why">.*?</section>)', idx, re.S).group(1)
+story = pathlib.Path('/tmp/claude-0/-home-claude/192c6e56-ae49-5ab3-a2ab-526c5a81bd6a/scratchpad/story.html').read_text()
 founder = pathlib.Path('/tmp/claude-0/-home-claude/192c6e56-ae49-5ab3-a2ab-526c5a81bd6a/scratchpad/founder.html').read_text()
 about_body = f'''
   <div class="about">

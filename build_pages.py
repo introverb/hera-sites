@@ -92,7 +92,7 @@ STRANDS = {
    items=[('PRODUCT · 01','Sakuya Matcha','A complete prenatal that works as a matcha latte. One scoop, frothed into warm or cold milk, every nutrient in a form that absorbs even in milk. <a href="shop.html">Pre-orders open soon.</a>','IN FORMULATION',False),
           ('DEVICES · 01','Fetal well-being at home','Ultrasound, non-stress tests and movement monitoring you can run yourself, between appointments and on your own schedule.','PLANNED',False),
           ('DEVICE · 02','Cholestasis home test','A bile-acid test you can take at home when the itching starts, with an answer in minutes rather than a week.','PLANNED',False)],
-   research=[('Nutrient absorption.','How XX bodies take up iron, folate and choline, and which everyday foods block them.'),
+   research=[('Nutrient absorption.','How the body takes up iron, folate and choline, and which everyday foods block them.'),
              ('The placenta.','The least understood human organ. We want a way to read its function in a living pregnancy.'),
              ('Hyperemesis gravidarum prevention.','Now that GDF15 is on the table, stopping severe pregnancy sickness before it starts rather than managing it after.'),
              ('Fetal well-being monitoring.','What home ultrasound, NST and movement data can and cannot tell us, validated against the clinic.'),
@@ -116,15 +116,15 @@ STRANDS = {
              ('Late postpartum emergencies.','Preeclampsia and hemorrhage up to six weeks after birth, at home, with low-tech monitoring.')],
  ),
  'khandi': dict(
-   title='KHANDI — Hera Biotech', kicker='XX MEN STRAND', name='KHANDI', glyph='शिखण्डी', gcls='dv', lang='sa', full='SHIKHANDI',
+   title='KHANDI — Hera Biotech', kicker='LIFE ON T STRAND', name='KHANDI', glyph='शिखण्डी', gcls='dv', lang='sa', full='SHIKHANDI',
    acc='#2D327F', arch='img/strand_shikhandi.gif', print='img/print_forest.jpg', obj='img/obj_arrowhead.png', objw=332, objh=1000, ox='10%', oy='-8%', ow='26%', orot='-30deg', char='img/char_shikhandi.jpg', cap='SHIKHANDI · SUBJECT 03', charw=896, charh=1344,
-   lore="Shikhandi, born a daughter of Panchala and raised a prince. When his bride's father learned the truth and marched on Panchala, Shikhandi went into the forest to die; there the yaksha Sthuna gave him his own male body in exchange for Shikhandi's. At Kurukshetra he led an army and brought down the unkillable Bhishma. The KHANDI strand is for XX men.",
-   desc="Products and tools for XX men. Opens with a free tracker, then clinical products built around life on testosterone.",
+   lore="Shikhandi, born a daughter of Panchala and raised a prince. When his bride's father learned the truth and marched on Panchala, Shikhandi went into the forest to die; there the yaksha Sthuna gave him his own male body in exchange for Shikhandi's. At Kurukshetra he led an army and brought down the unkillable Bhishma. The KHANDI strand is for trans men.",
+   desc="Products and tools for trans men. Opens with a free tracker, then clinical products built around life on testosterone.",
    status='TRACKER · IN BUILD',
    items=[('TOOL · 01','Tracker','A free app for life on T: doses, cycles, bloodwork, mood, the long record a clinic never keeps for you.','IN BUILD',False),
           ('PRODUCT · 01','—','Clinical products built around life on testosterone. To be announced.','TBA',True),
           ('RESEARCH','Life on T','What changes, what needs care, what the data says once someone collects it.','AGENDA',True)],
-   research=[('Life on testosterone.','The XX body on T: what changes, what needs care, what the data says once someone collects it.')],
+   research=[('Life on testosterone.','The body on T: what changes, what needs care, what the data says once someone collects it.')],
  ),
 }
 
@@ -218,5 +218,5 @@ about_body = f'''
     <a class="btn" href="index.html#signup">FOLLOW THE BUILD</a>
   </section>
 '''
-(ROOT/'about.html').write_text(page('About — Hera Biotech','about.html',about_body,desc='Why Hera Biotech exists, how we work, and the founder, Olivia Payne Anders. XX biosciences from Brooklyn.',foot=footer_about))
+(ROOT/'about.html').write_text(page('About — Hera Biotech','about.html',about_body,desc='Why Hera Biotech exists, how we work, and the founder, Olivia Payne Anders. From Brooklyn.',foot=footer_about))
 print('built', list(STRANDS)+['about'])

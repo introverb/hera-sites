@@ -14,7 +14,7 @@ import re as _re
 footer_sub = _re.sub(r'Photos via Unsplash:.*?Midjourney\.', 'Sketches, prints and objects rendered with Midjourney.', footer, flags=_re.S)
 footer_about = _re.sub(r'Photos via Unsplash:.*?Midjourney\.', 'Founder photo courtesy of Olivia Payne Anders.', footer, flags=_re.S)
 
-NAV = [('index.html','HERA'),('saku.html','SAKU'),('hath.html','HATH'),('about.html','ABOUT')]  # KHANDI page built but unlisted until reviewed
+NAV = [('index.html','HERA'),('frey.html','FREY'),('saku.html','SAKU'),('hath.html','HATH'),('about.html','ABOUT')]  # KHANDI page built but unlisted until reviewed
 
 def topbar(current):
     links=''.join(f'<a href="{h}"{" aria-current=\"page\"" if h==current else ""}>{t}</a>' for h,t in NAV)
@@ -35,6 +35,7 @@ EXTRA_CSS = '''
 .shero .deity .glyph{font-size:22px;line-height:1;letter-spacing:0;color:var(--paper)}
 .shero .deity .glyph.jp{font-family:var(--jp);font-weight:700}
 .shero .deity .glyph.eg{font-family:'Noto Sans Egyptian Hieroglyphs',serif;font-size:26px}
+.shero .deity .glyph.rn{font-family:'Noto Sans Runic',sans-serif;font-size:20px;letter-spacing:3px}
 .shero .deity .glyph.dv{font-family:'Noto Sans Devanagari',sans-serif;font-weight:600}
 .shero .lore{font-style:italic;color:var(--paper-dim);max-width:60ch;margin:4px 0 0;border-top:1px solid rgba(238,237,232,.2);padding-top:12px}
 .shero .desc{color:var(--paper);max-width:58ch;margin:0}
@@ -83,6 +84,22 @@ EXTRA_CSS = '''
 '''
 
 STRANDS = {
+ 'frey': dict(
+   title='FREY — Hera Biotech', kicker='CONCEPTION STRAND', name='FREY', glyph='ᚠᚱᛖᛃᚨ', gcls='rn', lang='non', full='FREYJA',
+   acc='#B8862B', arch='img/strand_freyja.gif', print='img/print_fjord.jpg', obj='img/obj_amber.png', objw=749, objh=1100, ox='4%', oy='-8%', ow='36%', orot='-18deg', char='img/char_freyja.jpg', cap='FREYJA · SUBJECT 00', charw=893, charh=1344,
+   lore="Freyja, Vanir goddess of love, fertility and seiðr, who wept tears of gold and drove a chariot drawn by cats. Half of the battle-dead were hers to choose before Odin took the rest. The FREY strand is for conception.",
+   desc="Before pregnancy: cycles, fertility and the time it takes. What to take before you try, how to read your own hormones at home, and the follicle scan that today only a clinic can do.",
+   status='PRECONCEPTION FORMULA · PLANNING',
+   items=[('PRODUCT · 01','Preconception formula','Built the way Sakuya Matcha is: for absorption first, tested lot by lot, and started months before, when it matters.','PLANNING',False),
+          ('KIT · 02','Home cycle lab','Quantitative LH, estradiol and progesterone from urine, read at home. Numbers, not smiley faces.','PLANNING',False),
+          ('DEVICE · 03','Home follicle scan','Ultrasound follicle tracking at home, on the same hardware as the SAKU fetal well-being work.','IN RESEARCH',False)],
+   research=[('Polycystic ovary syndrome.','One in eight, most undiagnosed, and not one drug designed for it. Global research spend is about $10M a year.'),
+             ('Endometriosis diagnosis.','Seven to ten years from first symptom to answer. A saliva test exists in Europe and not here.'),
+             ('Unexplained infertility.','Roughly a third of cases end the workup with no cause named. We think that is a measurement problem.'),
+             ('The luteal phase.','Progesterone, the implantation window and a diagnosis that is still argued over.'),
+             ('Recurrent miscarriage.','About half of recurrent losses never get a cause; couples are told to try again.'),
+             ('Preconception nutrition.','What to take before trying, how long before, and what blocks it.')],
+ ),
  'saku': dict(
    title='SAKU — Hera Biotech', kicker='PRENATAL STRAND', name='SAKU', glyph='木花咲耶姫', gcls='jp', lang='ja', full='KONOHANASAKUYA-HIME',
    acc='#A84F78', arch='img/strand_sakuya.gif', print='img/print_fuji.jpg', obj='img/obj_sprig.png', objw=643, objh=1100, ox='2%', oy='-10%', ow='40%', orot='-22deg', char='img/char_sakuya.jpg', cap='SAKUYA · SUBJECT 01', charw=552, charh=870,

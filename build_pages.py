@@ -14,7 +14,7 @@ import re as _re
 footer_sub = _re.sub(r'Photos via Unsplash:.*?Midjourney\.', 'Sketches, prints and objects rendered with Midjourney.', footer, flags=_re.S)
 footer_about = _re.sub(r'Photos via Unsplash:.*?Midjourney\.', 'Founder photo courtesy of Olivia Payne Anders.', footer, flags=_re.S)
 
-NAV = [('index.html','HERA'),('saku.html','SAKU'),('hath.html','HATH'),('khandi.html','KHANDI'),('about.html','ABOUT')]
+NAV = [('index.html','HERA'),('saku.html','SAKU'),('hath.html','HATH'),('about.html','ABOUT')]  # KHANDI page built but unlisted until reviewed
 
 def topbar(current):
     links=''.join(f'<a href="{h}"{" aria-current=\"page\"" if h==current else ""}>{t}</a>' for h,t in NAV)
@@ -140,6 +140,7 @@ def page(title, current, body, extra_style='', desc='', foot=None):
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="https://herabio.tech/{current}">
+{"<meta name=\"robots\" content=\"noindex\">" if current=="khandi.html" else ""}
 {fonts}
 {head_links}
 <style>{EXTRA_CSS}{extra_style}</style>

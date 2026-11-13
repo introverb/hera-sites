@@ -87,7 +87,7 @@ STRANDS = {
  'frey': dict(
    title='FREY — Hera Biotech', kicker='CONCEPTION STRAND', name='FREY', glyph='ᚠᚱᛖᛃᚨ', gcls='rn', lang='non', full='FREYJA',
    acc='#B8862B', arch='img/strand_freyja.gif', print='img/print_fjord.jpg', obj='img/obj_amber.png', objw=749, objh=1100, ox='4%', oy='-8%', ow='36%', orot='-18deg', char='img/char_freyja.jpg', cap='FREYJA · SUBJECT 00', charw=893, charh=1344,
-   lore="Freyja, Vanir goddess of love, fertility and seiðr, who wept tears of gold and drove a chariot drawn by cats. Half of the battle-dead were hers to choose before Odin took the rest. The FREY strand is for conception.",
+   lore="Freyja, Vanir goddess of love, fertility and seiðr, who wept tears of gold and drove a chariot drawn by cats. She owned the falcon cloak the other gods had to borrow, and the necklace Brísingamen, forged by dwarves. The FREY strand is for conception.",
    desc="Before pregnancy: cycles, fertility and the time it takes. What to take before you try, how to read your own hormones at home, and the follicle scan that today only a clinic can do.",
    status='PRECONCEPTION FORMULA · PLANNING',
    items=[('PRODUCT · 01','Preconception formula','Built the way Sakuya Matcha is: for absorption first, tested lot by lot, and started months before, when it matters.','PLANNING',False),

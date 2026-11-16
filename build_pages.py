@@ -14,7 +14,7 @@ import re as _re
 footer_sub = _re.sub(r'Photos via Unsplash:.*?Midjourney\.', 'Sketches, prints and objects rendered with Midjourney.', footer, flags=_re.S)
 footer_about = _re.sub(r'Photos via Unsplash:.*?Midjourney\.', 'Founder photo courtesy of Olivia Payne Anders.', footer, flags=_re.S)
 
-NAV = [('index.html','HERA'),('frey.html','FREY'),('saku.html','SAKU'),('hath.html','HATH'),('about.html','ABOUT')]  # KHANDI page built but unlisted until reviewed
+NAV = [('index.html','HERA'),('frey.html','FREY'),('saku.html','SAKU'),('hath.html','HATH'),('research.html','RESEARCH'),('about.html','ABOUT')]  # KHANDI page built but unlisted until reviewed
 
 def topbar(current):
     links=''.join(f'<a href="{h}"{" aria-current=\"page\"" if h==current else ""}>{t}</a>' for h,t in NAV)
@@ -23,6 +23,29 @@ def topbar(current):
 
 EXTRA_CSS = '''
 /* sub-pages */
+.rpage{display:flex;flex-direction:column;gap:72px}
+.rintro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:end;margin-top:-24px}
+.rintro h1{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(40px,6vw,72px);letter-spacing:4px;line-height:1}
+.rintro .kicker{font-weight:800;letter-spacing:4px;font-size:11px;color:var(--paper-dim);margin-bottom:14px}
+.rintro p{margin:0;color:var(--paper-dim);max-width:60ch}
+.rintro p.lead{color:var(--paper)}
+.rgroup{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:40px;border-top:1px solid var(--paper);padding-top:28px}
+.rgroup .ghead{display:flex;flex-direction:column;gap:10px}
+.rgroup .ghead .kicker{font-weight:800;letter-spacing:4px;font-size:11px;color:var(--paper-dim)}
+.rgroup .ghead h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(26px,3.4vw,38px);letter-spacing:2px}
+.rgroup .ghead h2 a{color:inherit;text-decoration:none}.rgroup .ghead h2 a:hover{text-decoration:underline}
+.rgroup .ghead p{margin:0;color:var(--paper-dim);max-width:34ch}
+.rgroup .ghead .deity{display:flex;align-items:baseline;gap:10px;font-size:11px;letter-spacing:2px;color:var(--paper-dim)}
+.rgroup .ghead .deity .glyph{font-size:18px;color:var(--paper);letter-spacing:0}
+.rgroup .ghead .glyph.jp{font-family:var(--jp);font-weight:700}.rgroup .ghead .glyph.eg{font-family:'Noto Sans Egyptian Hieroglyphs',serif;font-size:22px}.rgroup .ghead .glyph.rn{font-family:'Noto Sans Runic',sans-serif;letter-spacing:2px}
+.rgroup ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 28px;counter-reset:q}
+.rgroup ol li{counter-increment:q;border-top:1px solid rgba(238,237,232,.2);padding-top:12px;display:flex;flex-direction:column;gap:6px}
+.rgroup ol li::before{content:counter(q,decimal-leading-zero);font-size:11px;letter-spacing:2px;color:var(--acc,var(--paper-dim))}
+.rgroup ol li b{display:block;font-weight:600}
+.rgroup ol li span{color:var(--paper-dim)}
+.rgroup.frey{--acc:#B8862B}.rgroup.saku{--acc:#A84F78}.rgroup.hath{--acc:#17746F}
+@media (min-width:641px) and (max-width:1024px){.rintro{grid-template-columns:1fr}.rgroup{grid-template-columns:1fr;gap:20px}}
+@media (max-width:640px){.rintro{grid-template-columns:1fr;margin-top:-8px}.rgroup{grid-template-columns:1fr;gap:18px}.rgroup ol{grid-template-columns:1fr}}
 .topbar nav{display:flex;gap:22px;flex-wrap:wrap}
 .topbar nav a{text-decoration:none;color:var(--paper-dim)}
 .topbar nav a:hover,.topbar nav a[aria-current]{color:var(--paper)}
@@ -221,6 +244,41 @@ for key, d in STRANDS.items():
     style=f':root{{--acc:{d["acc"]};--arch:url("{d["arch"]}");--archs:url("{d["arch"].replace(".gif",".jpg")}");--print:url("{d["print"]}")}} .sart .obj{{--ox:{d["ox"]};--oy:{d["oy"]};--ow:{d["ow"]};--orot:{d["orot"]}}} .cell .dot,.research .dot{{background:var(--acc)}}'
     (ROOT/f'{key}.html').write_text(page(d['title'], f'{key}.html', body, style, desc=d['desc']))
 
+# ---------- research ----------
+GROUPS=[('frey','Conception','Before pregnancy: cycles, fertility and the time it takes.'),
+        ('saku','Pregnancy','Conception to birth: what the body needs and what nobody is watching between appointments.'),
+        ('hath','Postpartum','Birth onward: recovery, feeding and the first year.')]
+groups_html=''
+for key,stage,blurb in GROUPS:
+    d=STRANDS[key]
+    items=''.join(f'<li><b>{a}</b><span>{b_}</span></li>' for a,b_ in d['research'])
+    groups_html+=f'''
+  <section class="rgroup {key}">
+    <div class="ghead">
+      <div class="kicker">{stage.upper()}</div>
+      <h2><a href="{key}.html">{d['name']}</a></h2>
+      <div class="deity"><span class="glyph {d['gcls']}" lang="{d['lang']}">{d['glyph']}</span><span>{d['full']}</span></div>
+      <p>{blurb}</p>
+    </div>
+    <ol>{items}</ol>
+  </section>'''
+research_body=f'''
+  <div class="rpage">
+  <section class="rintro">
+    <div><div class="kicker">RESEARCH AGENDA</div><h1>Open questions</h1></div>
+    <div>
+      <p class="lead">These are the questions we think matter most and would love to work on. Some we can reach with the products we are building; most need a lab, a clinic or a cohort we have not met yet.</p>
+      <p>The list is a statement of intent, not a progress report. Everything here is unfunded, unpublished or barely studied, which is why it is here.</p>
+    </div>
+  </section>{groups_html}
+  <section class="cta">
+    <p>If you run a lab, clinic or cohort and any of these is your question too, write to <a href="mailto:olli@herabio.tech">olli@herabio.tech</a>.</p>
+    <a class="btn" href="mailto:olli@herabio.tech">WRITE TO US</a>
+  </section>
+  </div>
+'''
+(ROOT/'research.html').write_text(page('Research — Hera Biotech','research.html',research_body,desc='The questions Hera Biotech thinks matter most in conception, pregnancy and postpartum health, and would love to work on with partners.',foot=footer_about.replace('Founder photo courtesy of Olivia Payne Anders.','')))
+
 # ---------- about ----------
 story = pathlib.Path('/tmp/claude-0/-home-claude/192c6e56-ae49-5ab3-a2ab-526c5a81bd6a/scratchpad/story.html').read_text()
 founder = pathlib.Path('/tmp/claude-0/-home-claude/192c6e56-ae49-5ab3-a2ab-526c5a81bd6a/scratchpad/founder.html').read_text()
@@ -236,4 +294,4 @@ about_body = f'''
   </section>
 '''
 (ROOT/'about.html').write_text(page('About — Hera Biotech','about.html',about_body,desc='Why Hera Biotech exists, how we work, and the founder, Olivia Payne Anders. From Brooklyn.',foot=footer_about))
-print('built', list(STRANDS)+['about'])
+print('built', list(STRANDS)+['research','about'])

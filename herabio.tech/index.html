@@ -120,6 +120,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .research .partner{margin:0;color:var(--paper)}
 .research .partner a{color:var(--paper)}
 .research .rbody{padding:28px 32px;display:flex;flex-direction:column;gap:12px}
+.research ul.thesis{margin:4px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.research a.more{color:var(--paper);text-decoration:none;border-bottom:1px solid var(--paper-dim)}.research a.more:hover{border-color:var(--paper)}
 .research h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(22px,3vw,30px);letter-spacing:1px}
 .research p{margin:0;color:var(--paper-dim);max-width:62ch}
 .research ul{margin:4px 0 0;padding-left:18px;color:var(--paper-dim);display:flex;flex-direction:column;gap:8px;max-width:66ch}
@@ -219,7 +221,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
 
 <div class="wrap" id="top">
   <span class="reg" style="left:-34px;top:30px"></span><span class="reg" style="right:-34px;top:30px"></span>
-  <div class="topbar"><button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sitenav"><span></span><span></span><span></span></button><nav id="sitenav" aria-label="Site"><a href="index.html" aria-current="page">HERA</a><a href="frey.html">FREY</a><a href="saku.html">SAKU</a><a href="hath.html">HATH</a><a href="about.html">ABOUT</a></nav><a href="#top" aria-label="Hera home"><svg class="lockup-of" viewBox="153 -459 8636 1893" role="img" aria-label="HERA"><use href="#heraLockupOF"/></svg></a></div>
+  <div class="topbar"><button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sitenav"><span></span><span></span><span></span></button><nav id="sitenav" aria-label="Site"><a href="index.html" aria-current="page">HERA</a><a href="frey.html">FREY</a><a href="saku.html">SAKU</a><a href="hath.html">HATH</a><a href="research.html">RESEARCH</a><a href="about.html">ABOUT</a></nav><a href="#top" aria-label="Hera home"><svg class="lockup-of" viewBox="153 -459 8636 1893" role="img" aria-label="HERA"><use href="#heraLockupOF"/></svg></a></div>
 
   <section class="hero">
     <div class="hero-copy">
@@ -268,25 +270,17 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
   <section class="research" id="research" aria-label="Research">
     <div class="rfig c3"></div>
     <div class="rbody">
-      <div class="kicker">ACROSS STRANDS</div>
-      <h2>Research</h2>
-      <p>Every strand feeds a study. Open questions we intend to answer, in the order we can reach them:</p>
-      <ul>
-        <li><b>Polycystic ovary syndrome.</b> One in eight, most undiagnosed, and not one drug designed for it. Global research spend: about $10M a year.</li>
-        <li><b>Endometriosis diagnosis.</b> Seven to ten years from first symptom to answer; a saliva test exists in Europe and not here.</li>
-        <li><b>Nutrient absorption.</b> How the body takes up iron, folate and choline, and which everyday foods block them.</li>
-        <li><b>Fetal well-being monitoring.</b> Ultrasound, non-stress tests and movement monitoring you can run yourself, so the gap between appointments stops being a blind spot.</li>
-        <li><b>The placenta.</b> The least understood human organ. We want a way to read its function in a living pregnancy.</li>
-        <li><b>Hyperemesis gravidarum prevention.</b> Now that GDF15 is on the table, stopping severe pregnancy sickness before it starts rather than managing it after.</li>
-        <li><b>Intrahepatic cholestasis of pregnancy.</b> A home bile-acid test, so a rash of itching gets an answer in minutes instead of a week.</li>
-        <li><b>Postnatal nutrition.</b> What the body needs after birth, measured directly; includes the 5–10% bone loss during lactation.</li>
-        <li><b>Lactation hormones.</b> Prolactin measured and tracked at home, hormone regulation, and D-MER (dysphoric milk ejection reflex), which almost no one has studied.</li>
-        <li><b>Milk composition at home.</b> NICUs have the analyzer; parents have guesswork.</li>
-        <li><b>Postpartum thyroiditis and anemia.</b> Common, usually missed, both checkable at home at the right week.</li>
-        <li><b>Late postpartum emergencies.</b> Preeclampsia and hemorrhage up to six weeks after birth, with low-tech home monitoring.</li>
+      <div class="kicker">RESEARCH THESIS</div>
+      <h2>Measure first.</h2>
+      <p class="lead">Most of what medicine knows about iron, hormones, pregnancy and the first year was learned on other bodies and scaled down, or never learned at all. We think the next gains in women's health come from measurement before molecules: clinic-grade instruments made cheap enough for the kitchen counter, used on the schedule the body sets, producing the datasets the field never collected.</p>
+      <ul class="thesis">
+        <li><b>Measure at home</b> what a clinic measures once, if at all.</li>
+        <li><b>Fund the studies with the products,</b> and run them with partner labs.</li>
+        <li><b>Publish everything,</b> including the lot tests and the null results.</li>
       </ul>
-      <p class="partner">If you run a lab, clinic or cohort and want to work on any of these, write to <a href="mailto:olli@herabio.tech">olli@herabio.tech</a>.</p>
-      <div class="status"><span class="dot"></span>AGENDA · SEEKING PARTNERS</div>
+      <p><a class="more" href="research.html">The research agenda, strand by strand →</a></p>
+      <p class="partner">If you run a lab, clinic or cohort and want to work on any of it, write to <a href="mailto:olli@herabio.tech">olli@herabio.tech</a>.</p>
+      <div class="status"><span class="dot"></span>SEEKING PARTNERS</div>
     </div>
   </section>
 

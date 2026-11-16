@@ -121,6 +121,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .research .partner{margin:0;color:var(--paper)}
 .research .partner a{color:var(--paper)}
 .research .rbody{padding:28px 32px;display:flex;flex-direction:column;gap:12px}
+.research ul.thesis{margin:4px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.research a.more{color:var(--paper);text-decoration:none;border-bottom:1px solid var(--paper-dim)}.research a.more:hover{border-color:var(--paper)}
 .research h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(22px,3vw,30px);letter-spacing:1px}
 .research p{margin:0;color:var(--paper-dim);max-width:62ch}
 .research ul{margin:4px 0 0;padding-left:18px;color:var(--paper-dim);display:flex;flex-direction:column;gap:8px;max-width:66ch}
@@ -209,6 +211,29 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
 </style>
 <style>
 /* sub-pages */
+.rpage{display:flex;flex-direction:column;gap:72px}
+.rintro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:end;margin-top:-24px}
+.rintro h1{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(40px,6vw,72px);letter-spacing:4px;line-height:1}
+.rintro .kicker{font-weight:800;letter-spacing:4px;font-size:11px;color:var(--paper-dim);margin-bottom:14px}
+.rintro p{margin:0;color:var(--paper-dim);max-width:60ch}
+.rintro p.lead{color:var(--paper)}
+.rgroup{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:40px;border-top:1px solid var(--paper);padding-top:28px}
+.rgroup .ghead{display:flex;flex-direction:column;gap:10px}
+.rgroup .ghead .kicker{font-weight:800;letter-spacing:4px;font-size:11px;color:var(--paper-dim)}
+.rgroup .ghead h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(26px,3.4vw,38px);letter-spacing:2px}
+.rgroup .ghead h2 a{color:inherit;text-decoration:none}.rgroup .ghead h2 a:hover{text-decoration:underline}
+.rgroup .ghead p{margin:0;color:var(--paper-dim);max-width:34ch}
+.rgroup .ghead .deity{display:flex;align-items:baseline;gap:10px;font-size:11px;letter-spacing:2px;color:var(--paper-dim)}
+.rgroup .ghead .deity .glyph{font-size:18px;color:var(--paper);letter-spacing:0}
+.rgroup .ghead .glyph.jp{font-family:var(--jp);font-weight:700}.rgroup .ghead .glyph.eg{font-family:'Noto Sans Egyptian Hieroglyphs',serif;font-size:22px}.rgroup .ghead .glyph.rn{font-family:'Noto Sans Runic',sans-serif;letter-spacing:2px}
+.rgroup ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 28px;counter-reset:q}
+.rgroup ol li{counter-increment:q;border-top:1px solid rgba(238,237,232,.2);padding-top:12px;display:flex;flex-direction:column;gap:6px}
+.rgroup ol li::before{content:counter(q,decimal-leading-zero);font-size:11px;letter-spacing:2px;color:var(--acc,var(--paper-dim))}
+.rgroup ol li b{display:block;font-weight:600}
+.rgroup ol li span{color:var(--paper-dim)}
+.rgroup.frey{--acc:#B8862B}.rgroup.saku{--acc:#A84F78}.rgroup.hath{--acc:#17746F}
+@media (min-width:641px) and (max-width:1024px){.rintro{grid-template-columns:1fr}.rgroup{grid-template-columns:1fr;gap:20px}}
+@media (max-width:640px){.rintro{grid-template-columns:1fr;margin-top:-8px}.rgroup{grid-template-columns:1fr;gap:18px}.rgroup ol{grid-template-columns:1fr}}
 .topbar nav{display:flex;gap:22px;flex-wrap:wrap}
 .topbar nav a{text-decoration:none;color:var(--paper-dim)}
 .topbar nav a:hover,.topbar nav a[aria-current]{color:var(--paper)}
@@ -281,7 +306,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
 
 <div class="wrap" id="top">
   <span class="reg" style="left:-34px;top:30px"></span><span class="reg" style="right:-34px;top:30px"></span>
-  <div class="topbar"><button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sitenav"><span></span><span></span><span></span></button><nav id="sitenav" aria-label="Site"><a href="index.html">HERA</a><a href="frey.html">FREY</a><a href="saku.html">SAKU</a><a href="hath.html">HATH</a><a href="about.html">ABOUT</a></nav><a href="index.html" aria-label="Hera home"><svg class="lockup-of" viewBox="153 -459 8636 1893" role="img" aria-label="HERA"><use href="#heraLockupOF"/></svg></a></div>
+  <div class="topbar"><button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sitenav"><span></span><span></span><span></span></button><nav id="sitenav" aria-label="Site"><a href="index.html">HERA</a><a href="frey.html">FREY</a><a href="saku.html">SAKU</a><a href="hath.html">HATH</a><a href="research.html">RESEARCH</a><a href="about.html">ABOUT</a></nav><a href="index.html" aria-label="Hera home"><svg class="lockup-of" viewBox="153 -459 8636 1893" role="img" aria-label="HERA"><use href="#heraLockupOF"/></svg></a></div>
 
   <div class="sbar top" aria-hidden="true"></div>
   <section class="shero">

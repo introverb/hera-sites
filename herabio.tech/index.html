@@ -279,7 +279,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
         <li><b>Publish everything,</b> including the lot tests and the null results.</li>
       </ul>
       <p><a class="more" href="research.html">The research agenda, strand by strand →</a></p>
-      <p class="partner">If you run a lab, clinic or cohort and want to work on any of it, write to <a href="mailto:olli@herabio.tech">olli@herabio.tech</a>.</p>
+      <p class="partner">If you run a lab, clinic or cohort and want to work on any of it, write to <a href="mailto:kaylee@herabio.tech">kaylee@herabio.tech</a>.</p>
       <div class="status"><span class="dot"></span>SEEKING PARTNERS</div>
     </div>
   </section>
@@ -314,7 +314,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
   </section>
 
   <footer>
-    <span><a href="mailto:olli@herabio.tech">olli@herabio.tech</a></span>
+    <span><a href="mailto:kaylee@herabio.tech">kaylee@herabio.tech</a></span>
     <span><a href="shop.html">Shop · coming soon</a></span>
     <span>Brooklyn, NY</span>
     <span class="credits">Photos via Unsplash: Mehrshad Rajabi, Hanson Lu, Josiah Lewis, Cristina Gottardi, Sahand Hoseini, Sameh (sameh_from_egypt). Sketch and feather rendered with Midjourney.</span>
@@ -332,14 +332,14 @@ form.addEventListener('submit',async e=>{
   const email=form.email.value.trim(),phone=form.phone.value.replace(/[^\d+]/g,''),sms=form.sms.checked;
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){msg.textContent='Enter a valid email address.';return}
   if(sms&&!/^\+?\d{10,15}$/.test(phone)){msg.textContent='Add a mobile number to receive texts, or untick the box.';return}
-  if(!KLAVIYO_COMPANY_ID||!KLAVIYO_LIST_ID){msg.textContent='Signups open soon. Email olli@herabio.tech in the meantime.';return}
+  if(!KLAVIYO_COMPANY_ID||!KLAVIYO_LIST_ID){msg.textContent='Signups open soon. Email kaylee@herabio.tech in the meantime.';return}
   btn.disabled=true;msg.textContent='Sending…';
   const subs={email:{marketing:{consent:'SUBSCRIBED'}}};const attrs={email,subscriptions:subs};
   if(sms&&phone){attrs.phone_number=phone.startsWith('+')?phone:'+1'+phone;subs.sms={marketing:{consent:'SUBSCRIBED',consented_at:new Date().toISOString()}}}
   try{
     const r=await fetch('https://a.klaviyo.com/client/subscriptions/?company_id='+encodeURIComponent(KLAVIYO_COMPANY_ID),{method:'POST',headers:{'Content-Type':'application/vnd.api+json','revision':'2024-10-15'},
       body:JSON.stringify({data:{type:'subscription',attributes:{custom_source:'herabio.tech',profile:{data:{type:'profile',attributes:attrs}}},relationships:{list:{data:{type:'list',id:KLAVIYO_LIST_ID}}}}})});
-    if(r.status===202||r.ok){msg.textContent='Subscribed. Check your inbox to confirm.';form.reset()}else{msg.textContent='That did not go through. Try again, or email olli@herabio.tech.'}
+    if(r.status===202||r.ok){msg.textContent='Subscribed. Check your inbox to confirm.';form.reset()}else{msg.textContent='That did not go through. Try again, or email kaylee@herabio.tech.'}
   }catch(_){msg.textContent='No connection. Try again in a moment.'}
   btn.disabled=false;
 });

@@ -8,7 +8,7 @@
 <meta property="og:title" content="FREY — Hera Biotech">
 <meta property="og:description" content="Before pregnancy: cycles, fertility and the time it takes. What to take before you try, how to read your own hormones at home, and the follicle scan that today only a clinic can do.">
 <meta property="og:url" content="https://herabio.tech/frey.html">
-
+<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=JetBrains+Mono:wght@400;600;800&family=Noto+Sans+JP:wght@700&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Runic&family=Noto+Sans+Devanagari:wght@600&display=swap" rel="stylesheet">
@@ -211,6 +211,19 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
 </style>
 <style>
 /* sub-pages */
+.gate{min-height:calc(100vh - 220px);display:grid;place-items:center;margin-top:-24px}
+.gate .box{max-width:520px;width:100%;border:1px solid var(--paper);padding:34px 32px;display:flex;flex-direction:column;gap:14px;background:var(--ink)}
+.gate .kicker{font-weight:800;letter-spacing:4px;font-size:11px;color:var(--paper-dim)}
+.gate h1{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(26px,3.4vw,36px);letter-spacing:2px;line-height:1.1}
+.gate p{margin:0;color:var(--paper-dim)}
+.gate form{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.gate input{flex:1;min-width:180px;font:inherit;color:var(--paper);background:transparent;border:1px solid var(--paper);padding:11px 12px;border-radius:0}
+.gate input:focus{outline:1px solid var(--paper);outline-offset:2px}
+.gate button{font:inherit;font-weight:800;letter-spacing:3px;background:var(--paper);color:var(--ink);border:0;padding:12px 18px;cursor:pointer;border-radius:0}
+.gate .msg{font-size:12px;min-height:18px;color:var(--paper-dim)}
+.gate .home{color:var(--paper);text-decoration:none;font-size:12px;letter-spacing:2px;border-bottom:1px solid var(--paper-dim);width:max-content}
+.gate .home:hover{border-color:var(--paper)}
+.gated[hidden]{display:none!important}
 .rpage{display:flex;flex-direction:column;gap:72px}
 .rintro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:end;margin-top:-24px}
 .rintro h1{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(40px,6vw,72px);letter-spacing:4px;line-height:1}
@@ -308,6 +321,20 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
   <span class="reg" style="left:-34px;top:30px"></span><span class="reg" style="right:-34px;top:30px"></span>
   <div class="topbar"><button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sitenav"><span></span><span></span><span></span></button><nav id="sitenav" aria-label="Site"><a href="index.html">HERA</a><a href="frey.html" aria-current="page">FREY</a><a href="saku.html">SAKU</a><a href="hath.html">HATH</a><a href="research.html">RESEARCH</a><a href="about.html">ABOUT</a></nav><a href="index.html" aria-label="Hera home"><svg class="lockup-of" viewBox="153 -459 8636 1893" role="img" aria-label="HERA"><use href="#heraLockupOF"/></svg></a></div>
 
+  <section class="gate" id="gate">
+    <div class="box">
+      <div class="kicker">STRAND PAGES · NOT PUBLIC YET</div>
+      <h1>This page is for partners.</h1>
+      <p>The strand pages hold product roadmaps and study plans we share with labs, clinics and collaborators. If you are working with us, enter the access word. For more information, write to <a href="mailto:kaylee@herabio.tech">kaylee@herabio.tech</a>.</p>
+      <form id="gateform" novalidate>
+        <input type="password" id="gatepw" autocomplete="off" placeholder="Access word" aria-label="Access word">
+        <button type="submit">ENTER</button>
+        <div class="msg" id="gatemsg" role="status" aria-live="polite"></div>
+      </form>
+      <a class="home" href="index.html">← RETURN HOME</a>
+    </div>
+  </section>
+  <div class="gated" id="gated" hidden>
   <div class="sbar top" aria-hidden="true"></div>
   <section class="shero">
     <div class="copy">
@@ -339,7 +366,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
       <div class="kicker">RESEARCH · THIS STRAND</div>
       <h2>Open questions</h2>
       <ul><li><b>Polycystic ovary syndrome.</b> One in eight, most undiagnosed, and not one drug designed for it. Global research spend is about $10M a year.</li><li><b>Endometriosis diagnosis.</b> Seven to ten years from first symptom to answer. A saliva test exists in Europe and not here.</li><li><b>Unexplained infertility.</b> Roughly a third of cases end the workup with no cause named. We think that is a measurement problem.</li><li><b>The luteal phase.</b> Progesterone, the implantation window and a diagnosis that is still argued over.</li><li><b>Recurrent miscarriage.</b> About half of recurrent losses never get a cause; couples are told to try again.</li><li><b>Preconception nutrition.</b> What to take before trying, how long before, and what blocks it.</li></ul>
-      <p class="partner">If you run a lab, clinic or cohort and want to work on any of these, write to <a href="mailto:olli@herabio.tech">olli@herabio.tech</a>.</p>
+      <p class="partner">If you run a lab, clinic or cohort and want to work on any of these, write to <a href="mailto:kaylee@herabio.tech">kaylee@herabio.tech</a>.</p>
       <div class="status"><span class="dot"></span>AGENDA · SEEKING PARTNERS</div>
     </div>
   </section>
@@ -349,8 +376,22 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
     <a class="btn" href="index.html#signup">FOLLOW THE BUILD</a>
   </section>
 
+  </div>
+  <script>
+  (async function(){
+    const HASH='cdc56610ee59993ee752f47de6bf28086441a2b5c9a8ef0bfdcce632c760d7b2';
+    const gate=document.getElementById('gate'),gated=document.getElementById('gated'),form=document.getElementById('gateform'),pw=document.getElementById('gatepw'),msg=document.getElementById('gatemsg');
+    async function sha(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+    function open(){gate.hidden=true;gated.hidden=false}
+    let ok=false;try{ok=localStorage.getItem('hera-strands')===HASH}catch(e){}
+    const m=location.hash.match(/key=([^&]+)/);
+    if(!ok&&m&&await sha(decodeURIComponent(m[1]))===HASH){ok=true;try{localStorage.setItem('hera-strands',HASH)}catch(e){};history.replaceState(null,'',location.pathname)}
+    if(ok)open();
+    form.addEventListener('submit',async e=>{e.preventDefault();if(await sha(pw.value.trim().toLowerCase())===HASH){try{localStorage.setItem('hera-strands',HASH)}catch(e){};open()}else{msg.textContent='That is not it. Write to kaylee@herabio.tech for access.';pw.select()}});
+  })();
+  </script>
   <footer>
-    <span><a href="mailto:olli@herabio.tech">olli@herabio.tech</a></span>
+    <span><a href="mailto:kaylee@herabio.tech">kaylee@herabio.tech</a></span>
     <span><a href="shop.html">Shop · coming soon</a></span>
     <span>Brooklyn, NY</span>
     <span class="credits">Sketches, prints and objects rendered with Midjourney.</span>

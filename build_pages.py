@@ -23,6 +23,19 @@ def topbar(current):
 
 EXTRA_CSS = '''
 /* sub-pages */
+.gate{min-height:calc(100vh - 220px);display:grid;place-items:center;margin-top:-24px}
+.gate .box{max-width:520px;width:100%;border:1px solid var(--paper);padding:34px 32px;display:flex;flex-direction:column;gap:14px;background:var(--ink)}
+.gate .kicker{font-weight:800;letter-spacing:4px;font-size:11px;color:var(--paper-dim)}
+.gate h1{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(26px,3.4vw,36px);letter-spacing:2px;line-height:1.1}
+.gate p{margin:0;color:var(--paper-dim)}
+.gate form{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.gate input{flex:1;min-width:180px;font:inherit;color:var(--paper);background:transparent;border:1px solid var(--paper);padding:11px 12px;border-radius:0}
+.gate input:focus{outline:1px solid var(--paper);outline-offset:2px}
+.gate button{font:inherit;font-weight:800;letter-spacing:3px;background:var(--paper);color:var(--ink);border:0;padding:12px 18px;cursor:pointer;border-radius:0}
+.gate .msg{font-size:12px;min-height:18px;color:var(--paper-dim)}
+.gate .home{color:var(--paper);text-decoration:none;font-size:12px;letter-spacing:2px;border-bottom:1px solid var(--paper-dim);width:max-content}
+.gate .home:hover{border-color:var(--paper)}
+.gated[hidden]{display:none!important}
 .rpage{display:flex;flex-direction:column;gap:72px}
 .rintro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:end;margin-top:-24px}
 .rintro h1{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(40px,6vw,72px);letter-spacing:4px;line-height:1}
@@ -180,7 +193,7 @@ def page(title, current, body, extra_style='', desc='', foot=None):
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="https://herabio.tech/{current}">
-{"<meta name=\"robots\" content=\"noindex\">" if current=="khandi.html" else ""}
+{"<meta name=\"robots\" content=\"noindex\">" if current in ("khandi.html","saku.html","hath.html","frey.html") else ""}
 {fonts}
 {head_links}
 <style>{EXTRA_CSS}{extra_style}</style>
@@ -231,7 +244,7 @@ for key, d in STRANDS.items():
       <div class="kicker">RESEARCH · THIS STRAND</div>
       <h2>Open questions</h2>
       <ul>{research}</ul>
-      <p class="partner">If you run a lab, clinic or cohort and want to work on any of these, write to <a href="mailto:olli@herabio.tech">olli@herabio.tech</a>.</p>
+      <p class="partner">If you run a lab, clinic or cohort and want to work on any of these, write to <a href="mailto:kaylee@herabio.tech">kaylee@herabio.tech</a>.</p>
       <div class="status"><span class="dot"></span>AGENDA · SEEKING PARTNERS</div>
     </div>
   </section>
@@ -242,7 +255,36 @@ for key, d in STRANDS.items():
   </section>
 '''
     style=f':root{{--acc:{d["acc"]};--arch:url("{d["arch"]}");--archs:url("{d["arch"].replace(".gif",".jpg")}");--print:url("{d["print"]}")}} .sart .obj{{--ox:{d["ox"]};--oy:{d["oy"]};--ow:{d["ow"]};--orot:{d["orot"]}}} .cell .dot,.research .dot{{background:var(--acc)}}'
-    (ROOT/f'{key}.html').write_text(page(d['title'], f'{key}.html', body, style, desc=d['desc']))
+    gate='''
+  <section class="gate" id="gate">
+    <div class="box">
+      <div class="kicker">STRAND PAGES · NOT PUBLIC YET</div>
+      <h1>This page is for partners.</h1>
+      <p>The strand pages hold product roadmaps and study plans we share with labs, clinics and collaborators. If you are working with us, enter the access word. For more information, write to <a href="mailto:kaylee@herabio.tech">kaylee@herabio.tech</a>.</p>
+      <form id="gateform" novalidate>
+        <input type="password" id="gatepw" autocomplete="off" placeholder="Access word" aria-label="Access word">
+        <button type="submit">ENTER</button>
+        <div class="msg" id="gatemsg" role="status" aria-live="polite"></div>
+      </form>
+      <a class="home" href="index.html">← RETURN HOME</a>
+    </div>
+  </section>
+  <div class="gated" id="gated" hidden>''' + body + '''
+  </div>
+  <script>
+  (async function(){
+    const HASH='cdc56610ee59993ee752f47de6bf28086441a2b5c9a8ef0bfdcce632c760d7b2';
+    const gate=document.getElementById('gate'),gated=document.getElementById('gated'),form=document.getElementById('gateform'),pw=document.getElementById('gatepw'),msg=document.getElementById('gatemsg');
+    async function sha(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+    function open(){gate.hidden=true;gated.hidden=false}
+    let ok=false;try{ok=localStorage.getItem('hera-strands')===HASH}catch(e){}
+    const m=location.hash.match(/key=([^&]+)/);
+    if(!ok&&m&&await sha(decodeURIComponent(m[1]))===HASH){ok=true;try{localStorage.setItem('hera-strands',HASH)}catch(e){};history.replaceState(null,'',location.pathname)}
+    if(ok)open();
+    form.addEventListener('submit',async e=>{e.preventDefault();if(await sha(pw.value.trim().toLowerCase())===HASH){try{localStorage.setItem('hera-strands',HASH)}catch(e){};open()}else{msg.textContent='That is not it. Write to kaylee@herabio.tech for access.';pw.select()}});
+  })();
+  </script>'''
+    (ROOT/f'{key}.html').write_text(page(d['title'], f'{key}.html', gate, style, desc=d['desc']))
 
 # ---------- research ----------
 GROUPS=[('frey','Conception','Before pregnancy: cycles, fertility and the time it takes.'),
@@ -272,8 +314,8 @@ research_body=f'''
     </div>
   </section>{groups_html}
   <section class="cta">
-    <p>If you run a lab, clinic or cohort and any of these is your question too, write to <a href="mailto:olli@herabio.tech">olli@herabio.tech</a>.</p>
-    <a class="btn" href="mailto:olli@herabio.tech">WRITE TO US</a>
+    <p>If you run a lab, clinic or cohort and any of these is your question too, write to <a href="mailto:kaylee@herabio.tech">kaylee@herabio.tech</a>.</p>
+    <a class="btn" href="mailto:kaylee@herabio.tech">WRITE TO US</a>
   </section>
   </div>
 '''

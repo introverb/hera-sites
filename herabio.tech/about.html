@@ -211,6 +211,19 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
 </style>
 <style>
 /* sub-pages */
+.gate{min-height:calc(100vh - 220px);display:grid;place-items:center;margin-top:-24px}
+.gate .box{max-width:520px;width:100%;border:1px solid var(--paper);padding:34px 32px;display:flex;flex-direction:column;gap:14px;background:var(--ink)}
+.gate .kicker{font-weight:800;letter-spacing:4px;font-size:11px;color:var(--paper-dim)}
+.gate h1{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(26px,3.4vw,36px);letter-spacing:2px;line-height:1.1}
+.gate p{margin:0;color:var(--paper-dim)}
+.gate form{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.gate input{flex:1;min-width:180px;font:inherit;color:var(--paper);background:transparent;border:1px solid var(--paper);padding:11px 12px;border-radius:0}
+.gate input:focus{outline:1px solid var(--paper);outline-offset:2px}
+.gate button{font:inherit;font-weight:800;letter-spacing:3px;background:var(--paper);color:var(--ink);border:0;padding:12px 18px;cursor:pointer;border-radius:0}
+.gate .msg{font-size:12px;min-height:18px;color:var(--paper-dim)}
+.gate .home{color:var(--paper);text-decoration:none;font-size:12px;letter-spacing:2px;border-bottom:1px solid var(--paper-dim);width:max-content}
+.gate .home:hover{border-color:var(--paper)}
+.gated[hidden]{display:none!important}
 .rpage{display:flex;flex-direction:column;gap:72px}
 .rintro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:end;margin-top:-24px}
 .rintro h1{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(40px,6vw,72px);letter-spacing:4px;line-height:1}
@@ -337,7 +350,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
   </section>
 
   <footer>
-    <span><a href="mailto:olli@herabio.tech">olli@herabio.tech</a></span>
+    <span><a href="mailto:kaylee@herabio.tech">kaylee@herabio.tech</a></span>
     <span><a href="shop.html">Shop · coming soon</a></span>
     <span>Brooklyn, NY</span>
     <span class="credits">Founder photo courtesy of Olivia Payne Anders.</span>

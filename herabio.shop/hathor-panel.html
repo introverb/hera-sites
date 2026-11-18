@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hathor Panel — Hera</title>
+<meta name="description" content="An at-home postpartum blood panel at 6 weeks, 3 months and 6 months: iron stores, thyroid and vitamin D, reviewed by a physician. Launching 2027.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=JetBrains+Mono:wght@400;500&family=Noto+Sans:wght@400;500&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet">
+<style>
+[hidden]{display:none!important}
+img{max-width:100%}
+:root{
+  --stone:#E8DFCE; --grid:#DACFBA; --stone-hi:#F1EADB;
+  --turq:#2E9A94; --turq-deep:#1F6F6B; --gold:#B8903A; --ink:#1E2B2A; --ink-dim:#4C5A58;
+  --display:'Audiowide',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --sans:'Noto Sans',system-ui,sans-serif;
+  --eg:'Noto Sans Egyptian Hieroglyphs',serif;
+  --jp:'Noto Sans JP',system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background-color:var(--stone);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .45 0 0 0 0 .36 0 0 0 0 .2 0 0 0 .10 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size:48px 48px,48px 48px,220px 220px;
+  color:var(--ink);font-family:var(--sans);font-size:15px;line-height:24px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  -webkit-font-smoothing:antialiased;
+}
+body::before{content:"";position:fixed;left:0;top:0;bottom:0;width:14px;background:var(--turq);z-index:1}
+a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--turq);outline-offset:3px}
+.k,.chips,.status,.ledger b,.timeline b,.steps b,figcaption,.review,footer,.strands,label,button{font-family:var(--mono);letter-spacing:2px;text-transform:uppercase}
+.eg{font-family:var(--eg)} .jp{font-family:var(--jp);font-weight:700}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:88px;padding-block:28px 56px;padding-left:8px}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.lockup{width:224px;height:auto;color:var(--ink);display:block}
+.strands{display:flex;gap:6px;font-size:11px}
+.strands a{display:flex;align-items:center;gap:8px;text-decoration:none;padding:7px 12px 7px 10px;border:1px solid var(--ink);color:var(--ink-dim)}
+.strands a:hover{color:var(--ink)}
+.strands a[aria-current]{background:var(--ink);color:var(--stone)}
+.strands .sg{font-size:16px;line-height:1;letter-spacing:0}
+.strands a[aria-current] .sg{color:var(--gold)}
+
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:56px;align-items:center}
+.copy{display:flex;flex-direction:column;gap:18px}
+.strandline{display:flex;gap:14px;align-items:center}
+.glyph{font-size:52px;line-height:1;color:var(--gold)}
+.k{font-size:11px;color:var(--ink-dim)} .k.t{color:var(--turq-deep);font-weight:500}
+h1{font-family:var(--display);font-weight:400;font-size:64px;line-height:1.02;margin:4px 0 0}
+.lede{font-size:22px;line-height:30px;margin:0;font-weight:500}
+.body{margin:0;max-width:52ch;color:var(--ink-dim)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;font-size:11px}
+.chips span{border:1px solid var(--turq);color:var(--turq-deep);padding:5px 11px;border-radius:4px}
+.status{font-size:12px;border-top:1px solid var(--gold);padding-top:14px;display:flex;align-items:center;gap:10px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--turq);display:inline-block}
+.wl{display:flex;flex-direction:column;gap:8px;max-width:480px;margin-top:4px}
+.wl label{color:var(--ink);font-weight:500}
+.wl .row{display:flex}
+.wl input{flex:1;min-width:0;font:15px var(--sans);color:var(--ink);background:var(--stone-hi);border:1px solid var(--ink);border-right:0;padding:12px 14px;border-radius:0}
+.wl button{font-size:12px;font-weight:500;background:var(--turq);color:#fff;border:1px solid var(--ink);padding:0 22px;cursor:pointer;border-radius:0}
+.wl button:hover{background:var(--turq-deep)} .wl button:disabled{opacity:.6}
+.msg{font-size:13px;min-height:20px;color:var(--turq-deep)}
+.fine{font-size:12px;line-height:18px;color:var(--ink-dim);margin:0}
+.heroart{position:relative;margin:0;background:var(--stone-hi);padding:12px 12px 34px;box-shadow:0 18px 40px rgba(30,43,42,.22);border:1px solid rgba(30,43,42,.15);transform:rotate(1.2deg)}
+.heroart img{display:block;width:100%;height:auto}
+.heroart figcaption{position:absolute;left:14px;bottom:9px;font-size:10px;color:var(--ink-dim)}
+.tape{position:absolute;top:-10px;left:50%;width:96px;height:24px;transform:translateX(-50%) rotate(-3deg);background:rgba(46,154,148,.55)}
+
+.sec{display:flex;flex-direction:column;gap:22px}
+.sec-h{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--ink);padding-bottom:10px}
+.sec-h .n{font-family:var(--mono);font-size:12px;color:var(--gold);letter-spacing:2px}
+h2{font-family:var(--display);font-weight:400;font-size:30px;line-height:1.1;margin:0}
+.review{border:1px dashed var(--gold);padding:28px;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;text-align:center}
+.review b{color:var(--gold);letter-spacing:4px;font-weight:500}
+.review span{color:var(--ink-dim);text-transform:none;letter-spacing:0;font-family:var(--sans);font-size:13px}
+.ledger{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--ink)}
+.ledger div{display:flex;flex-direction:column;gap:6px;padding:18px 16px 18px 0;border-bottom:1px dashed var(--ink);border-right:1px dashed var(--ink);padding-left:16px}
+.ledger div:nth-child(3n){border-right:0}
+.ledger b{font-size:12px;font-weight:500;color:var(--turq-deep)}
+.ledger span{color:var(--ink-dim)}
+.ledger .same b{color:var(--gold)}
+.timeline{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
+.timeline::before{content:"";position:absolute;left:8px;right:8px;top:8px;border-top:2px solid var(--gold)}
+.timeline li{position:relative;padding:34px 24px 0 0;display:flex;flex-direction:column;gap:6px}
+.timeline li::before{content:"";position:absolute;left:0;top:0;width:18px;height:18px;border-radius:50%;background:var(--stone);border:2px solid var(--turq)}
+.timeline b{font-size:13px;font-weight:500}
+.timeline span{color:var(--ink-dim);max-width:30ch}
+.how-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:48px;align-items:center}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:flex;flex-direction:column}
+.steps li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;column-gap:12px;padding:14px 0;border-bottom:1px dashed var(--ink)}
+.steps li::before{content:"0" counter(s);grid-row:span 2;font-family:var(--mono);color:var(--gold);font-size:13px;padding-top:1px}
+.steps b{font-size:12px;font-weight:500}
+.steps span{color:var(--ink-dim)}
+.kit{margin:0;display:flex;flex-direction:column;align-items:center;gap:6px}
+.kit svg{width:100%;max-width:400px;height:auto;filter:drop-shadow(0 16px 22px rgba(30,43,42,.18))}
+.kit figcaption{font-size:10px;color:var(--ink-dim)}
+.promise{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 32px}
+.promise li{padding-left:22px;position:relative}
+.promise li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;background:var(--turq);transform:rotate(45deg)}
+.acc{border-top:1px solid var(--ink)}
+.acc details{border-bottom:1px solid var(--ink)}
+.acc summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:16px 4px;font-weight:500;font-size:16px}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+";font:400 22px/1 var(--display);color:var(--turq);transition:transform .2s}
+.acc details[open] summary::after{transform:rotate(45deg)}
+.acc p{margin:0;padding:0 4px 18px;color:var(--ink-dim);max-width:70ch}
+.fine-box{background:var(--ink);padding:18px 22px}
+.fine-box p{margin:0;color:var(--stone);font-size:12px;line-height:18px;max-width:80ch}
+.fine-box+footer{margin-top:-72px}
+footer{display:flex;flex-wrap:wrap;gap:10px 28px;font-size:11px;color:var(--ink-dim)}
+
+@media (max-width:820px){
+  .wrap{gap:64px;padding-block:20px 40px}
+  .topbar{flex-direction:column-reverse;align-items:flex-start;gap:18px}
+  .lockup{width:120px}
+  .strands{width:100%}.strands a{flex:1;justify-content:center;padding:8px 6px;font-size:10px;letter-spacing:1px}
+  .hero,.how-grid{grid-template-columns:1fr;gap:36px}
+  h1{font-size:44px}
+  .lede{font-size:19px;line-height:26px}
+  .heroart{transform:none}
+  .ledger{grid-template-columns:1fr 1fr}
+  .ledger div:nth-child(3n){border-right:1px dashed var(--ink)} .ledger div:nth-child(2n){border-right:0}
+  .timeline{grid-template-columns:1fr;gap:22px}
+  .timeline::before{left:8px;right:auto;top:8px;bottom:8px;border-top:0;border-left:2px solid var(--gold)}
+  .timeline li{padding:0 0 0 34px}
+  .promise{grid-template-columns:1fr}
+  .fine-box+footer{margin-top:-48px}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<path id="heraWM" d="M413 586H1326V0H1586V1434H1326V848H413V1434H153V0H413ZM3069 848H2248V586H3069ZM3186 1434H2248Q2194 1434 2130.0 1415.0Q2066 1396 2011.5 1352.5Q1957 1309 1920.5 1239.5Q1884 1170 1884 1069V131Q1884 104 1894.0 80.0Q1904 56 1921.5 38.0Q1939 20 1963.0 10.0Q1987 0 2015 0H3186V260H2144V1069Q2144 1120 2171.0 1147.0Q2198 1174 2250 1174H3186ZM4870 482Q4870 571 4848.0 641.0Q4826 711 4788.5 764.5Q4751 818 4702.0 856.0Q4653 894 4599.5 918.5Q4546 943 4491.5 954.0Q4437 965 4389 965L4932 1434H4530L3988 965H3801V705H4389Q4438 701 4478.5 684.5Q4519 668 4548.5 640.0Q4578 612 4594.0 572.5Q4610 533 4610 482V318Q4610 296 4604.5 284.5Q4599 273 4590.5 267.5Q4582 262 4572.5 261.0Q4563 260 4555 260H3697V1434H3437V131Q3437 104 3447.0 80.0Q3457 56 3474.5 38.0Q3492 20 3516.0 10.0Q3540 0 3568 0H4555Q4642 0 4702.0 31.5Q4762 63 4799.5 110.5Q4837 158 4853.5 213.0Q4870 268 4870 316ZM6538 1434H6278V1082H5364V1434H5104V717Q5104 560 5158.0 428.0Q5212 296 5308.0 201.0Q5404 106 5535.0 53.0Q5666 0 5821 0H6407Q6434 0 6458.0 10.0Q6482 20 6500.0 38.0Q6518 56 6528.0 80.0Q6538 104 6538 131ZM5364 822H6278V260H5821Q5809 260 5770.5 263.5Q5732 267 5681.5 281.0Q5631 295 5575.0 324.0Q5519 353 5472.0 404.0Q5425 455 5394.5 531.5Q5364 608 5364 717Z"/>
+<g id="heraMarkO" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="miter"><path d="M9.065,9.065 H68.935 A22,22 0 0 1 90.935,31.065 V68.935 A22,22 0 0 1 68.935,90.935 H31.065 A22,22 0 0 1 9.065,68.935 Z"/><path d="M13.87,-6 V-18 H26 A5,5 0 0 1 32,-13 V-6 Z"/><path d="M40.935,-6 V-28 H54.065 A5,5 0 0 1 59.065,-23 V-6 Z"/><path d="M68,-6 V-18 H81.13 A5,5 0 0 1 86.13,-13 V-6 Z"/></g>
+<g id="heraMarkF"><path d="M9.065,9.065 H68.935 A22,22 0 0 1 90.935,31.065 V68.935 A22,22 0 0 1 68.935,90.935 H31.065 A22,22 0 0 1 9.065,68.935 Z" fill="none" stroke="currentColor" stroke-width="18.13" stroke-linejoin="miter"/><g fill="currentColor"><path d="M13.87,-6 V-18 H26 A5,5 0 0 1 32,-13 V-6 Z"/><path d="M40.935,-6 V-28 H54.065 A5,5 0 0 1 59.065,-23 V-6 Z"/><path d="M68,-6 V-18 H81.13 A5,5 0 0 1 86.13,-13 V-6 Z"/></g></g>
+<g id="heraLockupOF"><path d="M413 586H1326V0H1586V1434H1326V848H413V1434H153V0H413ZM3069 848H2248V586H3069ZM3186 1434H2248Q2194 1434 2130.0 1415.0Q2066 1396 2011.5 1352.5Q1957 1309 1920.5 1239.5Q1884 1170 1884 1069V131Q1884 104 1894.0 80.0Q1904 56 1921.5 38.0Q1939 20 1963.0 10.0Q1987 0 2015 0H3186V260H2144V1069Q2144 1120 2171.0 1147.0Q2198 1174 2250 1174H3186ZM4870 482Q4870 571 4848.0 641.0Q4826 711 4788.5 764.5Q4751 818 4702.0 856.0Q4653 894 4599.5 918.5Q4546 943 4491.5 954.0Q4437 965 4389 965L4932 1434H4530L3988 965H3801V705H4389Q4438 701 4478.5 684.5Q4519 668 4548.5 640.0Q4578 612 4594.0 572.5Q4610 533 4610 482V318Q4610 296 4604.5 284.5Q4599 273 4590.5 267.5Q4582 262 4572.5 261.0Q4563 260 4555 260H3697V1434H3437V131Q3437 104 3447.0 80.0Q3457 56 3474.5 38.0Q3492 20 3516.0 10.0Q3540 0 3568 0H4555Q4642 0 4702.0 31.5Q4762 63 4799.5 110.5Q4837 158 4853.5 213.0Q4870 268 4870 316ZM6538 1434H6278V1082H5364V1434H5104V717Q5104 560 5158.0 428.0Q5212 296 5308.0 201.0Q5404 106 5535.0 53.0Q5666 0 5821 0H6407Q6434 0 6458.0 10.0Q6482 20 6500.0 38.0Q6518 56 6528.0 80.0Q6538 104 6538 131ZM5364 822H6278V260H5821Q5809 260 5770.5 263.5Q5732 267 5681.5 281.0Q5631 295 5575.0 324.0Q5519 353 5472.0 404.0Q5425 455 5394.5 531.5Q5364 608 5364 717Z" fill="none" stroke="currentColor" stroke-width="58" stroke-linejoin="miter"/><g transform="translate(7355 0) scale(14.34)"><use href="#heraMarkF"/></g></g>
+<g id="heraLockup"><use href="#heraWM" fill="currentColor"/><g transform="translate(7355 0) scale(14.34)"><use href="#heraMarkO"/></g></g>
+</defs></svg>
+<div class="wrap">
+  <header class="topbar">
+    <nav class="strands" aria-label="Shop">
+      <a href="/"><span class="sg jp">木</span><span>SAKU · Sakuya Matcha</span></a>
+      <a href="/hathor-panel" aria-current="page"><span class="sg eg" lang="egy">&#x13261;</span><span>HATH · Hathor Panel</span></a>
+    </nav>
+    <a href="/" aria-label="Hera shop home"><svg class="lockup" viewBox="153 -459 8636 1893" role="img" aria-label="HERA"><use href="#heraLockupOF"/></svg></a>
+  </header>
+
+  <section class="hero">
+    <div class="copy">
+      <div class="strandline"><span class="glyph eg" lang="egy">&#x13261;</span><div><div class="k t">HATH · POSTPARTUM STRAND</div><div class="k">HATHOR</div></div></div>
+      <h1>Hathor Panel</h1>
+      <p class="lede">Know how your body is recovering.</p>
+      <p class="body">One finger-prick at 6 weeks, 3 months and 6 months. Iron stores, thyroid and vitamin D, checked at home and reviewed by a physician.</p>
+      <div class="chips"><span>FERRITIN</span><span>TSH</span><span>FREE T4</span><span>TPO</span><span>VITAMIN D</span></div>
+      <div class="status"><span class="dot"></span>HATHOR PANEL · LAUNCHING 2027</div>
+      <form class="wl" id="wl" novalidate>
+        <label class="k" for="email">JOIN THE WAITLIST</label>
+        <div class="row">
+          <input type="email" id="email" name="email" autocomplete="email" required placeholder="you@example.com">
+          <button type="submit" id="wlbtn">JOIN</button>
+        </div>
+        <div class="msg" id="wlmsg" role="status" aria-live="polite"></div>
+        <p class="fine">We use your email only to tell you when Hathor Panel launches. We never sell it, and every email has an unsubscribe link.</p>
+      </form>
+    </div>
+    <figure class="heroart">
+      <span class="tape" aria-hidden="true"></span>
+      <img src="img/hathor/hero-placeholder.jpg" alt="Hathor, drawn in gold line, in the columned hall of her temple at Dendera" width="900" height="1125">
+      <figcaption>HATHOR · DENDERA</figcaption>
+    </figure>
+  </section>
+
+  <section class="sec why">
+    <div class="sec-h"><span class="n">01</span><h2>Why it exists</h2></div>
+    <div class="review"><b>IN CLINICIAN REVIEW</b><span>This section goes up once a clinician has checked it.</span></div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><span class="n">02</span><h2>What it checks</h2></div>
+    <div class="ledger">
+      <div><b>FERRITIN</b><span>Your stored iron</span></div>
+      <div><b>TSH</b><span>The signal that tells your thyroid to work</span></div>
+      <div><b>FREE T4</b><span>Thyroid hormone available to your body</span></div>
+      <div><b>TPO ANTIBODIES</b><span>Antibodies to a thyroid protein</span></div>
+      <div><b>VITAMIN D</b><span>Your 25-OH vitamin D level</span></div>
+      <div class="same"><b>SAME PANEL</b><span>All five, every kit</span></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><span class="n">03</span><h2>When</h2></div>
+    <ol class="timeline">
+      <li><b>6 WEEKS</b><span>Your starting point, around the usual postpartum checkup.</span></li>
+      <li><b>3 MONTHS</b><span>A second point, so you can see what's changing.</span></li>
+      <li><b>6 MONTHS</b><span>A third point completes the trend.</span></li>
+    </ol>
+  </section>
+
+  <section class="sec how">
+    <div class="sec-h"><span class="n">04</span><h2>How it works</h2></div>
+    <div class="how-grid">
+      <ol class="steps">
+        <li><b>ORDER</b><span>Choose the Series of 3 or a single kit.</span></li>
+        <li><b>SIGN IN</b><span>Enter your delivery date at my.herabio.shop. We time your next kits from it.</span></li>
+        <li><b>PRICK &amp; POST</b><span>One finger-prick at home, then back in the prepaid envelope.</span></li>
+        <li><b>SEE RESULTS</b><span>A physician reviews every result. You see them in your Hera portal, with a trend across your kits and a PDF for your own provider.</span></li>
+      </ol>
+      <figure class="kit" aria-label="Kit box, render coming">
+        <svg viewBox="0 0 420 380" role="img" aria-label="Hathor Panel kit box">
+          <polygon points="60,110 260,70 360,110 160,150" fill="#F1EADB" stroke="#1E2B2A" stroke-width="2"/>
+          <polygon points="60,110 160,150 160,340 60,300" fill="#D9CDB4" stroke="#1E2B2A" stroke-width="2"/>
+          <polygon points="160,150 360,110 360,300 160,340" fill="#E8DFCE" stroke="#1E2B2A" stroke-width="2"/>
+          <polygon points="160,290 360,250 360,268 160,308" fill="#2E9A94"/>
+          <g transform="matrix(1,-0.2,0,1,0,0)">
+            <text x="182" y="236" font-family="Noto Sans Egyptian Hieroglyphs" font-size="40" fill="#B8903A">&#x13261;</text>
+            <text x="182" y="268" font-family="Audiowide" font-size="21" fill="#1E2B2A">Hathor Panel</text>
+            <text x="182" y="286" font-family="JetBrains Mono" font-size="8" letter-spacing="1.5" fill="#1E2B2A">AT-HOME BLOOD PANEL</text>
+          </g>
+        </svg>
+        <figcaption>KIT · RENDER COMING</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><span class="n">05</span><h2>Your data</h2></div>
+    <ul class="promise">
+      <li>Your name is never attached to your health data in research.</li>
+      <li>Your data is never sold.</li>
+      <li>Research use is optional and off unless you turn it on.</li>
+      <li>You can delete your account and data at any time.</li>
+    </ul>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><span class="n">06</span><h2>Questions</h2></div>
+    <div class="acc">
+      <details><summary>Is this a diagnosis?</summary><p>No. A physician reviews every result, and you'll get a PDF to share with your own provider.</p></details>
+      <details><summary>When should I take the first kit?</summary><p>About six weeks after giving birth.</p></details>
+      <details><summary>Can I buy just one kit?</summary><p>Yes. The Series of 3 is the better deal and shows you a trend.</p></details>
+    </div>
+  </section>
+
+  <div class="fine-box">
+    <p>Hathor Panel is not a substitute for medical care. If you have symptoms that worry you, contact your provider. In an emergency, call 911.</p>
+  </div>
+  <footer>
+    <span><a href="mailto:support@herabio.shop">support@herabio.shop</a></span>
+    <span><a href="https://herabio.tech">Hera Biotech</a></span>
+    <span>Brooklyn, NY</span>
+  </footer>
+</div>
+
+<script>
+// Waitlist: email only. Posts straight to Klaviyo's subscribe endpoint; no tracking script or pixel is loaded on this page.
+const KLAVIYO_COMPANY_ID="SLKwT2",KLAVIYO_LIST_ID="VFvYWy";
+const f=document.getElementById('wl'),m=document.getElementById('wlmsg'),b=document.getElementById('wlbtn');
+f.addEventListener('submit',async e=>{
+  e.preventDefault();const email=f.email.value.trim();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){m.textContent='Add a valid email.';return}
+  b.disabled=true;m.textContent='…';
+  try{
+    const r=await fetch(`https://a.klaviyo.com/client/subscriptions/?company_id=${KLAVIYO_COMPANY_ID}`,{method:'POST',headers:{'Content-Type':'application/json','revision':'2024-10-15'},
+      body:JSON.stringify({data:{type:'subscription',attributes:{custom_source:'herabio.shop hathor panel waitlist',profile:{data:{type:'profile',attributes:{email,subscriptions:{email:{marketing:{consent:'SUBSCRIBED'}}}}}}},relationships:{list:{data:{type:'list',id:KLAVIYO_LIST_ID}}}}})});
+    if(r.ok||r.status===202){m.textContent='Check your inbox to confirm. You\'re on the waitlist.';f.reset()}else{m.textContent='Something went wrong. Email support@herabio.shop and we\'ll add you.'}
+  }catch(err){m.textContent='Something went wrong. Email support@herabio.shop and we\'ll add you.'}
+  b.disabled=false});
+</script>
+</body>
+</html>

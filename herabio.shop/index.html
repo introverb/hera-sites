@@ -7,7 +7,7 @@
 <meta name="description" content="Hera — Sakuya Matcha, a complete prenatal you froth into milk. First release of the Sakuya strand. $49.99 for 30 servings.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=JetBrains+Mono:wght@400;600;800&family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=JetBrains+Mono:wght@400;600;800&family=Noto+Sans+JP:wght@700&family=Noto+Sans+Egyptian+Hieroglyphs&display=swap" rel="stylesheet">
 <style>
 [hidden]{display:none!important}
 img{max-width:100%}
@@ -236,6 +236,16 @@ footer a:hover{text-decoration:underline}
   .scoop{display:none}
   .product{font-size:38px}
 }
+.topbar{flex-direction:column;align-items:flex-end;justify-content:flex-start;gap:14px}
+.prod{display:flex;flex-direction:column;align-items:flex-end;font-family:var(--mono);font-size:11px;letter-spacing:2px;line-height:1}
+.prod a{display:flex;align-items:center;gap:10px;text-decoration:none;padding:7px 0;color:var(--deep-dim)}
+.prod a:hover{color:var(--deep)}
+.prod a[aria-current]{color:var(--deep);font-weight:600}
+.prod a[aria-current] span:first-child{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.prod .sg{width:18px;text-align:center;font-size:15px;letter-spacing:0;font-weight:400}
+.prod .eg{font-family:'Noto Sans Egyptian Hieroglyphs',serif}
+.prod .jp{font-family:'Noto Sans JP',system-ui,sans-serif;font-weight:700}
+.topbar .prod{display:flex;gap:0}
 </style>
 </head>
 <body>
@@ -250,6 +260,7 @@ footer a:hover{text-decoration:underline}
 <div class="wrap" id="top">
   <div class="topbar">
     <a href="#top" aria-label="Hera home"><svg class="lockup" viewBox="153 -459 8636 1893" role="img" aria-label="HERA"><use href="#heraLockupOF"/></svg></a>
+    <nav class="prod" aria-label="Products"><a href="/" aria-current="page"><span>SAKUYA MATCHA</span><span class="sg jp">木</span></a><a href="/hathor-panel"><span>HATHOR PANEL</span><span class="sg eg" lang="egy">&#x13261;</span></a></nav>
   </div>
 
   <section class="hero">
